@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compressor</title>
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAGFJREFUOE9j/A8EDFgAIxBgE0cXY8RlAEwhIYPgBqArhBlMtgEgFxBjCE4X0MQAZBfB2ficiS6HLcBJ8gKyAbDAJcsA5JghKRqxeZekhESSAdgSEFYDiEnv+NQQlWEGtwEASjlwCe0PD/kAAAAASUVORK5CYII=">
+<style>body{margin: 0px;background-color: #000;}.none{display: none !important;}.mrgn10{margin: 10px;}canvas{image-rendering: -o-pixelated;image-rendering: pixelated;}.RL-divide{display: flex;flex-direction: row;width: fit-content;align-items: stretch;padding: 10px;}.CMD-chat{width: 330px;margin-top: 4px;position: relative;display: flex;display: -webkit-box;display: -ms-flexbox;-webkit-box-orient: vertical;-ms-flex-direction: column;flex-direction: column;color: #fff;font-family: monospace;font-size: 16px;}.CMD-log-outer{width: 330px;min-height: 0;position: relative;-ms-flex: 1 1 auto;flex: 1 1 auto;-webkit-box-flex: 1;overflow-y: auto;overflow-x: hidden;background-color: #323232;}.CMD-log-view{min-width: 0;min-height: 0;position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow: hidden scroll;}.CMD-log-tobottom{min-height: 100%;position: relative;display: flex;flex-direction: column;justify-content: flex-end;align-items: stretch;-ms-flex-direction: column;-ms-flex-pack: end;-ms-flex-align: stretch;-webkit-box-align: stretch;-webkit-box-direction: normal;-webkit-box-orient: vertical;-webkit-box-pack: end;}.CMD-log-fit{min-height: 0;}.CMD-log{height: fit-content;width: 313px;padding: 5px 0;overflow-wrap: break-word;word-break: break-all;}.CMD-log > div{padding: 4px 10px;}.CMD-line-bar{width: 320px;padding: 10px 0 10px 10px;background-color: #242424;}.CMD-line{width: 310px;max-height: 150px;padding-right: 10px;outline: none;}.CMDscrl{overflow-y: auto;overflow-x: hidden;}.CMDscrl::-webkit-scrollbar{width:17px;background-color: #0000;}.CMDscrl::-webkit-scrollbar-thumb{width:17px;background-color: #111;}.red{background-color: #510;color: #faa;}.yel{background-color: #440;color: #ffa;}.grn{background-color: #150;;color: #afa}._13{transform: translateY(3.85px);}.CMD-log input{width: calc(100% - 10px);height: 16px;border: none;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, "Courier New", sans-serif;}.CMD-log .inp a{display: inline-block;height: 21px;padding: 7px 5px 4.5px 5px;}.inp span{line-height: 32px;display: content;}.CMD-log > div > div, .CMD-log input, .CMD-log a{padding: 5px;}.CMD-log button, .CMD-log a{height: 32px;border: none;background-color: #505050;color: #fff;font-size: 16px;font-family: monospace, "Curier New", sans-serif;}.CMD-log button:hover, .CMD-log button:focus, .CMD-log a:hover, .CMD-log a:focus{background-color: #5f5f5f;}.CMD-log button:active, .CMD-log a:active{background-color: #454545;user-select: none;}.CMD-log .inp{width: calc(100% - 10px);min-height: 0px;max-height: 999999px;padding: 0 5px;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, sans-serif;}.inps{display: flex;overflow-wrap: normal;word-break: keep-all;}.CMD-log .inps div{padding: 0;}.CMD-log .inps div div:first-child{padding: 0 0 5px 5px;}.inps > div:not(:last-child) {padding-right: 10px;}.narrow {width: 70px;}input[type="color"]{height: 29px;width: 111%;padding: 0 3px;}.wide{width: 50%;}.inp button, .inp a{position: relative;left: -5px;top: 0;}.loadbox{width: 300px;height: 32px;position: fixed;top: 50%;right: 50%;transform: translate(50%, 50%);background-color: #111111;}div.loading{width: fit-content;height: fit-content;padding: 0;position: relative;background-color: #505050;}div.loading div:nth-child(1){height: 100%;padding: 0;position: absolute;top: 0;left: 0;background-color: #474;transition: 0.15s;}div.loading div:nth-child(2){width: fit-content;padding: 1.5px 1px;height: 19px;z-index: 1;position: relative;background-color: #0000;}</style>
+</head>
+<body onload="init();">
+  <div class="RL-divide"><div id="11"><canvas id="0" class="_13" width="480" height="560"></canvas></div><div class="CMD-chat"><div class="CMD-log-outer"><div class="CMD-log-view CMDscrl"><div class="CMD-log-tobottom"><div id="12" class="CMD-log"><div><div title="mostly for base64">input:</div><input id="1" title="typical input element to not flood console with long strings"></div><div><div title="for opening Deltarealm json ships">file input:</div><div class="inp"><button id="3">Upload</button><span></span></div></div><div><div title="some of what the code can be used for">ship functions:</div><button id="4" title="sets shipt to one from base64">Load ship from Base64</button><div></div><button id="5" title="sets ship to one from file">Load ship from JSON file</button><div></div><button id="6" title="sets input to base64 of actual ship (variable ship can be accesed in console)">base64 of ship</button><div></div><button id="7" title="sets file output to actual ship json than drawed ship png">JSON file of ship</button></div><div><div title="name of actual ship">ship.name:</div><input id="15" type="text" title="encodes ship with this ship.name (just edits name)"></div><div class="inps" title="inputs for my drawShip function"><div class="narrow"><div>width:</div><input id="16" type="number"></div><div class="narrow"><div>height:</div><input id="17" type="number"></div><div class="wide"><div>backg.-color:</div><input id="18" type="text"></div></div><div><div title="after clicking JSON file of ship file waits here to be downloaded throught download link">file output:</div><div class="inp"><a id="8" class="none" title="doubleclick to download 2 instantly (xD)">Download</a><span>no file to download</span></div></div><div id="9"><div title="417kB of ships within 50kB of html with its coding and decoding">my ships:</div></div><div><div title="some of what the code can be used for">for ships:</div><button id="19" title="sets 'my ships' to ships from multiple JSON files">Load ships from files</button><div></div><button id="20" title="sets 'my ships' ships from first csv file">Load ships from csv file</button><div></div><button id="21" title="adds loaded ship to 'my ships'">add ship to ships</button><div></div><button id="22" title="sets file output to csv file of all of 'my ships'">csv file of all ships</button></div></div></div></div></div><div class="CMD-line-bar"><div id="13" contenteditable="true" class="CMD-line CMDscrl"><span></span><span style="color: #999; font-size: 16px;">not working command line</span><span></span></div><div class="CMD-line-btns none">comming spoon</div></div></div><input id="2" class="none" type="file" multiple></div>
+  <script>
+    "use strict";
+    function GE(e=!1){if(e!==!1)_ge=e;return document.getElementById(_ge++);}
+    var _ge, hex = {}, canvas = GE(0), ctx, input = GE(), file = GE(), uint8array, uploadBtn = GE(), downl = GE(8), CMD = {}, CMDlog = GE(12), CMDline = GE(), shipName = GE(15), canW = GE(), canH = GE(), cBC = GE(), toDownload;
+    function QS(s) {return document.querySelector(s);}
+    ctx = canvas.getContext('2d');
+    (()=>{for(var i=16,s="0123456789abcdef";i-->0;){hex[i]=s[i];hex[s[i]]=i;}})();
+    function hexColor(arr = [0,0,0]) {
+      for (var i = 0, clr = "#"; i < arr.length; i++)
+      clr += "" + hex[arr[i] >> 4] + hex[arr[i] & 15];
+      return clr;
+    }
+    CMD.err = function (...args) {
+      var el = document.createElement('div');
+      el.textContent = args.join(" ");
+      el.classList.add("red");
+      CMDlog.appendChild(el);
+      setTimeout(function () {
+        CMDlog.parentElement.parentElement.scrollTop = CMDlog.offsetHeight;
+      }, 0);
+    }
+    CMD.log = function (...args) {
+      var el = document.createElement('div');
+      el.textContent = args.join(" ");
+      CMDlog.appendChild(el);
+      CMDlog.parentElement.parentElement.scrollTop = CMDlog.offsetHeight;
+    }
+    window.onerror = (m,s,l,c,e) => {
+      CMD.err(`${m}\n`+s+`\n${l}\n${c}\n${e}`);
+    };
+  </script><script>
+    var file = {input: file, a: [], i: 0, succ: 0, fun: function() {}, err: "", fin: function() {}, loadbar: null, more: !1}
+    function fileOpener(f, e, f_ = function () {}, el = null, more = !1) {
+      if (!file.a.length)
+        return CMD.err('No files chosen');
+      if (el !== null && file.loadbar !== null) return;
+      function readFile() {
+        var reader = new FileReader();
+        reader.readAsArrayBuffer(file.input.files[file.i]);
+        reader.addEventListener("loadend", function() {
+          var next = file.fun(new Uint8Array(reader.result));
+          if (file.loadbar !== null)
+            file.loadbar.style.width = `${file.i / file.a.length * 100}%`;
+          file.succ |= !next;
+          if (next || file.more)
+            if (++file.i < file.a.length)
+              return setTimeout(readFile, 0);
+            else if (file.succ)
+              file.fin();
+            else
+              CMD.err(file.err);
+          else
+            file.fin();
+          if (file.loadbar !== null) {
+            var st = file.loadbar.style;
+            if (!file.succ)
+              st['background-color'] = '#744';
+            st.width = '100%';
+            st.visibility = 'hidden';
+            st.transition = '0.3s';
+            setTimeout(function () {
+              var el = file.loadbar.parentElement;
+              el.nextElementSibling.classList.remove('none');
+              el.remove();
+              file.loadbar = null;
+            }, 350);
+          }
+        }, false);
+      }
+      file.i = file.succ = 0, file.fun = f; file.err = e;
+      file.fin = f_, file.loadbar = el, file.more = more;
+      if (file.loadbar !== null) {
+        var bar = file.loadbar, el = document.createElement('div');
+        el.classList.add('loading');
+        el.innerHTML = '<div></div><div>' + bar.textContent + '</div>';
+        bar.before(el);
+        bar.classList.add('none');
+        file.loadbar = el.childNodes[0];
+      }
+      readFile();
+    }
+    file.input.addEventListener("change", (e) => {
+      if ((file.a = file.input.files).length > 1)
+        for (var i = 0, s = ""; i < file.a.length;)
+          s += (i ? ' "' : '"') + file.a[i++].name + '"';
+      else
+       var s = file.a.length ? file.a[0].name : '';
+      uploadBtn.nextElementSibling.textContent = s;
+    });
+    CMDline.onkeyup = function (k) {
+      var s = CMDline.innerText, s_, st = null;
+      if (s.indexOf('\n') < 0)
+        return;
+      CMDline.innerText = s = s.replaceAll('\n', '');
+      CMD.log((st = QS(s)).offsetHeight);
+      st.style.border = '1px white solid';
+      setTimeout(function() {
+        QS(CMDline.innerText).style.border = '';
+      }, 3000);
+      /*s.split(';').forEach(function (e) {
+        var a = e.split(':');
+        if (a.length === 2)
+          if (typeof st[s_ = a[0].trim()] === 'undefined')
+            CMD.err('nonexisting style: ' + s_)
+          else
+            st[s_] = a[1].trim();
+        else if (a.length > 1)
+          CMD.err('styles syntax');
+      })*/
+    }
+    function init() {
+      var delay = 0;
+      uploadBtn.onclick = function () {
+        if (delay < Date.now()) {
+          file.input.click();
+          delay = Date.now() + 900;
+        }
+      }
+      function shipJSON(ubyteArr) {
+        if (ubyteArr[0] !== 123 || ubyteArr[ubyteArr.length - 1] !== 125)
+          return !0;
+        for (var i = ubyteArr.length, s = ""; i-- > 0;)
+          s = String.fromCharCode(ubyteArr[i]) + s;
+        try {
+          ship = JSON.parse(s);
+        } catch (err) {
+          CMD.err(err);
+        }
+        if (file.more)
+          if (typeof (s = encodeCmprsShip()) === 'string')
+            CMD.err(s);
+          else
+            myShips.push(ship.name, uint8arrayToBase64(s));
+      }
+      GE(4).onclick = function () {
+        var result = base64ToUint8array(input.value);
+        if (typeof result === "string")
+          return CMD.err(result);
+        result = decodeCmprsShip(result);
+        if (typeof result === "string")
+          return CMD.err(result);
+        ship = result;
+        shipName.value = ship.name;
+        drawShip(canW.value, canH.value, cBC.value);
+      }
+      GE().onclick = function () {
+        fileOpener(shipJSON, "No ship JSON file chosen", function() {
+          shipName.value = ship.name;
+          drawShip(canW.value, canH.value, cBC.value);
+        }, this);
+      }
+      GE().onclick = function () {
+        if (shipName.value)
+          ship.name = shipName.value;
+        var result = encodeCmprsShip(ship);
+        if (typeof result === "string")
+          return CMD.err(result);
+        input.value = uint8arrayToBase64(result);
+      }
+      GE().onclick = function () {
+        if (shipName.value)
+          ship.name = shipName.value;
+        else if (ship.name.indexOf("-edited") + 1)
+          shipName.value = ship.name += "-edited";
+        toDownload = ["data:text/json;utf8," + JSON.stringify(ship)];
+        var w = 450, h = 600, s = shipName.value, dat;
+        downl.nextElementSibling.textContent = downl.download = s + ".json";
+        downl.classList.remove("none");
+        drawShip(w, h, cBC.value);
+        dat = ctx.getImageData(0, 0, w, h).data;
+        var i = 0, l = w * h, uint8clarr = new Uint8ClampedArray(l << 2);
+        for (var from, to; i < l; i++) {
+          from = i << 2;
+          to = Math.floor((i) / w) + h * (w - (i % w)) << 2;
+          for (var n = 4; n-- > 0;)
+            uint8clarr[to++] = dat[from++];
+        }
+        canvas.width = h;
+        canvas.height = w;
+        ctx.putImageData(new ImageData(uint8clarr, h, w), 0, 0);
+        toDownload.push(s + ".png", canvas.toDataURL("image/png"));
+        drawShip(canW.value, canH.value, cBC.value);
+      }
+      GE().onclick = function () {
+        downl.href = toDownload.shift();
+        if (toDownload.length) 
+          return setTimeout(function () {
+            var e = downl.nextElementSibling;
+            e.textContent = downl.download = toDownload.shift();
+          }, 0);
+        downl.classList.add("none");
+        downl.nextElementSibling.textContent = "no file to download";
+      }
+      var i = 0, el, btns = GE(), myShips = [
+        "Klllsec",
+        "gAAHS0lJSXNlY4CBAQBoTcVwA6a1C+EOJw+cIIVQoTMBiQlgthMKnAqhQqcCQoRFYUKgAIFAhcAEdGY5BwuoFBYyUCEQCCEyARAEQBAAQYBAZzAaXKY4h8IB0UKcAAsCEgAiEwghCIAgAIIACAKVwgJxwuQAqCBaiBMiIwEgCIQQBEAQAEEABIEKIoR4GS6EywxlQ+hQysFwACQQI8AJ0Qp0LKASSBVGAQoEKBCgQIBCBXFCvBAEShMUChtBB1dWiBcggTghWoACoAMAAADACxABAJgAAAAAcUGAoBAJRGAonUCHDhKEjnUcAAfECtECtBAnQAEA4AUAgCESAZMAAQgRShiQsjFsECXCpwpahRShkR0AEoAW4gUoAF4ADBEKiMw5OhlC4SMHkwwB0AJggAKgMiQQH8TE0KGAznwkIiCBeBwKgUuhUujURwJRKrwGr0wBkCicCBE5QwaQASwQIQSGxgR88oPDAkAVRAhAR+LAAcAiUwBUANDJQXAhBKQlA1gAABQEnRzhAGCxAURABD4SBw4AFpnCAUAhUwAgiEhKBpABLBAgMHQmYJEfHABQBRcC0JE4cACwyBQAFQB0MhFMCBFqySAWCAwNCmjMxyMCCggOgcCkMCl86uOBKBUauQKgU7gQAjOUT4ZQWMjBJUMArAAYAhQAheVheCAgLKpgVXgROtkBAACIFaBT6AAKhgAFBKArnUCKDjKEB+V9pAGGdUwAK8QKAQDECVAAAAAAAEMgAkYBAhAClHCZoKwKK0EHV1YIAB3ECbECrAAFAAAAAAAAAAAAAAAQAwQICoFAZIYCoUEpE8MEsEKUACfECtCxgEKgU5gEKBCgQIACAQogTogVgkAEi3MCrBArxAlRkYAKgkAIQQAEARAEQBAAcUKsDAPCYIZTKBQQIE6GD+EjASAqARAEQBAAQQAEAQoNxGmSgwUUpAACARCVAAgCIAiAIECgM2AwmOaMAqPCofCpgAqBwohAAQKBEIEJ+Mx1KoVK4TMBjwkA0PyB6wE=",
+        "Ckamee",
+        "gAAGQ2thbWVlgIECAGhO2F4CNHIb7xYD8NMiAQiBmIJLgAAEpmgKhQIgYAhQANMEk8IEcAFggAKYoSkUCgAAAQMRMCIwSTApTAAXwAOAAQogyuEVYNCZkFFhBDgUOoPOhIwKB0Cn0Bl05mNT2AA2gE6hM+jMxqawAWwAADqACwAAgAAAAxRAPQDYAAB0CpfBZSomhQnggQgBNgAAnUJpcJmMTWED2AAAUCgNStFxCYwCBBgwYxAqTBCJKaEAgshYERp40AAMABg6EfAidKZhUsDQoIBGBWwALQgIAAAAuAAAdAABAIYABQRmgMIE8DA0LmBw4AAdMBEgWoAIoAIAAID6AFGhgUqMRwYxQoAA8AIg6GQHBw4AIgAAHFK5wWGgAcRARC4ygBAAAPFROYBIIVoIJhwqhQoiMyUUQBAZG0IHDxqAAQADEbAiNKZhVBgZOhTQqYAVoAEBAQCACwAAAAARAIYIBURmgMII8DB0LoADB+iAiaggWoAIIAQAAID6qCAqNFCIMfgEGHwmZFKYACaFz+AzIZPCBEDhM/jMx6PwAACg8Bl8ZuNReAAAAAAwAAAAEAFgiFBApB4ATAAAKAwGkamoFCqAC+IEmAAAUBgMIpPxKDwAAABQGAwi0TEJECDAYDCSQ+EAGAAiBiIAApMElUIFcAEAwAAFMOdyKBwAEQMUwDRBpVABXAAYoABiaAhAIKaAAAEIAA7thSQC",
+        "KIIOneHalf",
+        "gAAKS0lJT25lSGFsZoCBAQBoT0oeAqaxC+EOJw+cIIVQoTMBiQlgthMKnAqhQqcCQoRFYUKgAIFAhcAEdGY5BwuoFBYyUCEQCAVSgVAgFQgFUoFQIBUIBTqD0eAyxTkUDogW4gRYEJAAAqlAKJAKhAKpQCiQCoQCqUClsEAAyakAQLQQp0BHAgikAqFAKhAKpAKhQCoQCqQCFUQI8TJcCJcZyobQoZSD4QBIAECcEK1AxwIqgVRhFKBAgAIBCgQoVBAnxAtBoDRBobARdGDlAEgAQJwQLUAHAAAAAAAvQAQAYAIAAAAAiAuCQiQQgaF0Ah06SBA61nEAHAAFxAnRAgAAAOAFAIAhEgGTAAEIEUoYkLIxbBAlwqcKWoUUoZEdABKIFeIFKABeAAyRWUcnQyh85GCSISBWiJcBCohQGRKID2Ji6FBAZz4SEZBAPA6FwKVQKXTqI4EoFV6DV6YASBROhIicIQPIABaIEAJDYwI++cFhAaAKIgSgI3HgAGCRKQAqAOjkILgQAtKSASwAAAqCTo5wALDYACIgAh+JAwcAi0zhAKCQKQAQRCQlA8gAFggQGDoTsMgPDgCoggsB6EgcOABYZAqACgA6mQgmhAi1ZBALBIYGBTTm44EDHAKBSWFS+NTHA1HKFirgMkX5ZAjZQrYHUcaBIwI=",
+        "JKmi",
+        "gAAESkttaYCBAgBoT5suArjRE/MCSc/jCIFNgAABAgQYvCyQAGQQD0ACAAIEgQBhZBghQAAAAILCZXCBwQVAgcAlwAAZIYMoARIAACBAEOhkgMPiwIEDgAgARAUROXDgwIEDAAAEIoEQYIRIIQCkEAAIRGQEECVAAgAAAAACnQxw4MCBA4AIAEQFETlw4MCBAwAABCKBEGCESCEApBAACERihAwgAQAAAAAACp1BBsCBAwcOACIAAJXCCpA4cODAAUAEQOFSGAESgBQAAIAIgEBkAqPAKHAJECDA4BKFDCABAAAAAAAAnUECkDhw4MABQAQAolLYABIHDhw4AAUAHDhw4EAUQoAQIAUAACAiBxAlQAIAAAAAAJ0McODAgQOACABEBRE5cODAgQMbAAKLAwcOHDgQBQAhRAoBIIVADiBKgAQAAAgQADoZ4MCBAwcAEQCICiJy4MCBAweqMDlw4MCBA1MoFAqIFAJACgEdMoFPgACFDCADoNCwQAaQQCwAAECAABAhhAwhBAgACQAIAJFCBAYJAAAAFBhEZlAITAIECDCIANP8iSMC",
+        "Bejj",
+        "gAAEQmVqaoCBAgBoT7rUArLSE+0ESc/LCIFNgACEjjwSiAcCBIIAPSqBUYAAhMCskbBA4pA5cACRiUUCsAAUAAsAAAAZwCKwmEPFAhVABQAARIIilcAlwCAwKSQKCUQJUAIAAACggKDwGixikAAsACk4AACRCixmUClUECsAEMgAUohEPQ6ADADAJRCpFBIHDhw4cODAgQMIsBAApCABAACARQ0qgAMgBYMMAERiFofCAXAAZAAgkMqFcJlECwCiBCgBAAAAAKAAAEFhQVhgIABIwWIBAJESLDAQAKSgkAEAIAAdKogWoALIAACASFAEwQWQCBCJFiBz4MCBAwcOHDhwAEEOABRgkQEAAFDAQAQAHDJzCEigAqgAMlCISARABUDhEgkAGUAJACAFAAAAAAAAAAikMgCgAJFIBgAUdEEMIhIAUAEgAoAEAACRaAEyBw4cOHDgwIEDBxCJHAAowCIFAAAADEQABThk5jCQAIAKIAMABhGJAMgAKEQmsQKAKAFKAAAAAAAoAEBQ+Aw+GAgAgEQGkAKASAkGGAgAgEIGAIBAhA4FRApQAWQAAEAkKIJgAiBALTIHDhw4cODAgQMIsBCABQAAAAY1KABSAGCQAYBIzKJQADABZAAgkAqEwSwyhQyiBCgBAAAAUEBQaAwaMSgAAACHDABEKjCYwaRQQKwABQhkACAS9QAAAACB0qyQsUDmwIEDyPV5JAOIRCwKgAIAwAIwAADIAAaBwRwmhQKgAAAAAATzIDAJEGAQoRcygVWAAISGPAqIBQIEggY9CoFJgACECA/5gSUC",
+        "inhyg0BG",
+        "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",
+        "bdyss000",
+        "gAAIYmR5c3MwMDCAgQIAaFZfugE4kRPjCGWP4xhSgGQAAIAgJQEhAIIUJJQAAAAgKElACBABAAAADABADlqAEgAAAKAgAgAAAEFKAkIABCk5qABKAAAIOjIQAkQACCJQAABZqABKAAQlGYhIQggQEaSkoSITEQlChhISUJBBZGQBQARwEKRoAAtIQEEGARx0ABEAgIEgkgUAIhgxASCAFiqQkEFkoGCAKEQJUowMPpQwYWQDACIABCkZyMBBChIychDJAgARHJgAUpCQiYcKHqQwYQWIVMmFcIFqhKDhBQBQiYMMREwAGTlIZQGACAQAAA4mMlGRKkTwGiFMGMlDBg5SkLCRg1QWAIjgwAWQwgIgoBMPFTxoYUIKEKmSCGEgZcgIOtSQgYIMIgMHHQAAANABFpCBggwCOOgANgAAA0EqCwBEYALAAhARROigAAkZBFAQQRSiJCJdyMhASNCRiIwUAAgBEKRgoANAFjKACABBSgJCgBAAQUQGMoAOAEFKDkKACAAAAGAgBEAGAABAEIGFCAAAAAQpCQgBQoIUDHQASEMIEAEgiEgBUhACdAQpaYjIBI38iSIC",
+        "engiSupport001",
+        "gAAOZW5naVN1cHBvcnQwMDGAgQEAaFa+IgG60BP1DGfP6xqBTYDBK5BAlBAgCKQucTlAgYoFKogHAsADQIAbcIBQqsIIQSF1Bw5QolKoAAiUSmgBOoASAAAAAIlCg9CoQwsxOXAAEAEAAACiYocRYnDgMMFDCxODw+UwoUklcAkAkRYihAABoAQAkEBUcsEhdAAQAQAAAIJMcBgc0AA4IBMcOCCTCmKFoCIPQAIAAAAAABQWhA4cKojLYXIAEAEAAACiYocQ4nDgcMHDChOHw+RwoUkhMAkwk0dgFWDQCBQQJQQIAqlLTA5QAAsUEBcEgBeAADfgAOFUhQmCwusOHKBEoTABTAIRThiGIQI=",
+        "Kl2ndfinal",
+        "gAAKS2wybmRmaW5hbIABAGhW+yACujAT8QwpT+sIhZYhQIEAxaBggQLgUAgQAnM5DAIzh0whY+hE4EXoxOSAeEggQJNCYWIIUCBAJ0gEXhZIIE6FDgUyFsggAJwAHQAAABMAgAhigsBQokECMUAAyBgCEbgECIBYFQ6ISR4AhAALAIWFBRJWKBFKNKgURoAL4ANIAAAAWBhegpehNYlK4XAIHThw4MCBA4XL4EKHRGED6AAARAAgPobABAJTyAA6AA4dAHQIYCICeCQeh9AhMpOJBQqGgJQgA8gATogTAgSATxQyCBAhBIAJFBaACCCDyGQhAIgAQgDgMAEsMFDIQQQQgkhKUMoCgBAsSgAQqTiEDqEDBw4cOHDgACIhicyBAwcOHDhwWCDIBYfQAQ0gg0guOHQOoUMJKy8ECAABOkHGAhnEqfChQMICCUQI8AEAAAAAwAQA4oLAcKJBBrFBAAgZIhGYBAiAWBUKiEseAABYACg0LJCxwolwokGhUABEAAkAAAAAMKQEK8NqEhQ4hA4cOHDgwIFCZBChQ6aQAQAAEAFcEBgiE2AKG0DnAh0AdIhgIgJ4JDaH0CEyk4oFKoYI1SBTwAAFIhSDigUqgEwhQojMpTAYzBwShYShEYEVoRGTB2IjgQZNKoWDIUKBCBPxiSEC",
+        "ohmbohmb",
+        "gAAIb2htYm9obWKAAQBoWDqAADATM/EMCQ/DEBSYUKBCgQsFUhRYUaBFgRcJI0CBAQUKFDhQ4EWBFAVWFGiRMDoU+FAgQ4ENBVoUeFEgRYEVCaNBgQcFEhRYUGBFgRYFXhRIkTAyFNhQoEOBDwVCFBhRoESBEwkjQYEFBRoUeFBgRIESBU4UCJEwKhS4UCBCgQkFShQ4USBEgREJo0CBAwUCFBhQ4ESBEAVGFCgBFxmapgQ=",
+        "bdyss001",
+        "gAAIYmR5c3MwMDGAgQIAaFjn8AI4kRPjCmWP4xhSgGwAAIAgJQEhQECQgoUSAAAABCUJCAEiAAAAgAEASEILUAIAAAAURAAAACBISUAIgCAlCRVACQAAQUcGQoAIAEEECgAgDRVACYCgBAMRAHIQAiBIyUNFCiKygGxkpAFaSFhAovAAZBAZWQAQARwEKSnIABIAABsISAEycgCgA4gAAAwEkTwAEIGATQVUACVAAgAAAIgJICKAGiqFAwSkCp1CC5BBZGZgU9ggClARKUQKEwCFV+AVoJAohAKR+cJDGjKyACBTeNlAphAYBAabCNhYQAIQASBIRUEGAAykECVACFAydCpggxgBOlIQyQMAEQhIISYAYKAEaEBARiIqgAgMpBApQAgQAQAAAGIFgCIOhgOAwsUGCoAEIFKgAiBcJBoZQAYAIATIACIAAAAAAADwAgCo5AKACCwAAewAEpACVBAVGIgAgAAAwMEkKiqACBSkABEAEAAAAABkogIAAAAAAAAAEoAIAEFkvpCQg4ygIw8ZQKaQsoFEITKIDDIQEAEAAEAkZADAQAgRAgAoGRoVkEGMABEpSOUBACAgg7gAUjAQAQABHYmoACIwkEG0ACFABAAAAIgUAIqYGCYAChEbqAAAUKACIAykCxk5QNCRh4wFZAotQAaRgYMOAAAAJAFAAgIiAAAAMnIAoAPYAAAMBKk8ABCBgEwFFCAgAgPsfSECAHEBAAEAFoCIAEooFAo10CisABlEpgYmgAiiABUULoUKgMLHAjIACpUA8oWMDIQEHZnISAGAEABBCgY6AKQhA4gAEKQkIAQIARBEZCAD6AAQpCQhBIgAAAAABkIAZAAAAAQRaIgAAABAkJKAECAkSMFAB4A8hAARAIIIFABABkKAjiAlDxFJQA4AkvyJIgI=",
+        "fligtest",
+        "gAAIZmxpZ3Rlc3SAgQEAaFkedAC68BP3ApHv6wyIEQwrxAmDBmCEwypQwaCBeMWFBKABiAAAAAAwyoA6KgEAjVkqkAAAEAEAAABgBGgA0AAYIoAGAFkqkTwAACIAAAAAjDKgjkkAQGOWAi4NxAiGEQIMGgBwWAUqGDQQLw72heEF",
+        "jsonFileEdtrTests",
+        "gAARanNvbkZpbGVFZHRyVGVzdHOAAQBoWLuAADATM/EMDw/DEBeYXKBygcsFUhdYXaB1gdcJI3CBwQUKFzhc4HWB1AVWF2idMDoX+Fwgc4HNBVoXeF0gdYHVCaNxgccFEhdYXGB1gdYFXhdInTAyF9hcoHOBzwVCFxhdoHSB0wkjcYHFBRoXeFxgdIHSBU4XCJ0wKhe4XCBygckFShc4XSB0gdEJo3CBwwUCFxhc4HSB0AVGFygB1xmapgQ=",
+        "frame",
+        "gAAFZnJhbWWAgQIAaFlSbgC6EBz5AqsP7CyAC+KEGBQWECSweGAAFI8KDogBIgUYFAIYBLDITFDBC4HD4HA4cACRyYANwAAJKpkBwAEAAAQYBLDITDDBC4HD4HA4cACRqWCFuCBOgEuhgcECigQEYEEFBcAAkUJcCgNOBY5hAA=="
+      ];
+      function addShip() {
+        el = document.createElement("button");
+        el.textContent = myShips[i++];
+        el.onclick = function () {
+          var s = this.nextElementSibling.textContent;
+          s = decodeCmprsShip(base64ToUint8array(s));
+          if (typeof s === 'string')
+            return CMD.err(s);
+          shipName.value = (ship = s).name;
+          drawShip(canW.value, canH.value, cBC.value)
+        }
+        btns.appendChild(el);
+        el = document.createElement("span");
+        el.textContent = myShips[i++];
+        el.classList.add("none");
+        btns.appendChild(el);
+        if (i < myShips.length)
+          btns.appendChild(document.createElement("div"));
+      }
+      function setupShips() {
+        for (el = GE(9).childNodes, i = el.length; --i > 0;)
+          el[i].remove();
+        while (i < myShips.length)
+          addShip();
+      }
+      setupShips();
+      GE(19).onclick = function () {
+        myShips = [];
+        i = 0;
+        fileOpener(shipJSON, "No ship JSON files chosen", setupShips, this, !0);
+      }
+      GE().onclick = function () {
+        fileOpener(function (ubyteArr) {
+          var i = ubyteArr.length, s = '';
+          for (i < 32 ? 0 : i = 32; i-- > 0;)
+            if (ubyteArr[i] < 32 || ubyteArr[i] > 126)
+              return !0;
+          while (++i < ubyteArr.length)
+            s += String.fromCharCode(ubyteArr[i]);
+          if (!/^[ -~]+?,(?:\w|[+/])+={0,2}(?:,[ -~]+?,(?:\w|[+/])+={0,2})*$/.exec(s))
+            return !0;
+          myShips = s.split(',');
+          setupShips();
+        }, "No csv ships file Chosen", function() {}, this);
+      };
+      GE().onclick = function () {
+        var s = shipName.value, v = encodeCmprsShip();
+        i = myShips.length;
+        if (typeof v === 'string')
+          return CMD.err(v);
+        myShips.push(s ? s : ship.name, uint8arrayToBase64(v));
+        btns.appendChild(document.createElement("div"));
+        setupShips();
+      }
+      GE().onclick = function () {
+        toDownload = ['data:text/csv;utf8,' + myShips.join(',')];
+        var s = input.value;
+        s = s.length && s.length < 128 ? s.replaceAll(',', '') : 'DltrShips';
+        downl.nextElementSibling.textContent = downl.download = s + ".csv";
+        downl.classList.remove("none");
+      }
+
+      setDrShipEdtr();
+      shipName.value = ship.name;
+      canW.value = 480;
+      canH.value = 560;
+      cBC.value = "#111133";
+      cBC.style.color = shipName.style.color = "#c97";
+      canH.style.color = canW.style.color = "#bda";
+    }
+    function base64ToUint8array(base64) {
+      var uint8array = [], buffer, i = 0, p = 0, c;
+
+      for (; i < base64.length; i++) {
+        c = base64.charCodeAt(i);
+        if (c > 64)
+          (c & 223) < 91 ? c -= c & 32 ? 71 : 65 : c = 128;
+        else if (c < 58)
+          c > 46 ? c === 47 ? c = 63 : c += 4 : c === 43 ? c = 62 : c = 128;
+        else if (c === 61) {
+          if (i & 2) {
+            i & 1 ? i + 1 === base64.length ? p = 0 : c = 129 : i + 2 === base64.length && base64.charAt(i + 1) === "=" ? p = !(i += 2) : c = 137;
+            buffer !== 0 ? c = 145 : 0;
+          } else
+            c = 130;
+        } else
+          c = 128;
+        if (c & 128)
+          return ["char", "padding", "padding char"][c & 7] + " error " + (c >> 3 & 3 ) + " : " + buffer + " pos.: " + i;
+        buffer = (buffer << 6) | c;
+        if (p) {
+          uint8array.push(buffer >> (p -= 2) & 255);
+          buffer &= 63 >> (i << 1 & 6);
+        } else
+          p = 6;
+      }
+      return new Uint8Array(uint8array);
+    }
+
+    function uint8arrayToBase64(uint8array) {
+      var string = "", buffer, i = 0, p = 0, c;
+      function codeChar() {
+        return c < 52 ? c < 26 ? 65 : 71 : c < 62 ? -4 : c < 63 ? -19 : -16;
+      }
+
+      for (; i < uint8array.length; i++) {
+        buffer = buffer << 8 | (c = uint8array[i]);
+        if (p == 4) {
+          c = buffer >> 6;
+          string += String.fromCharCode(
+            c + codeChar(c)
+          );
+          c = buffer & 63;
+          buffer = p = 0;
+        } else {
+          c = buffer >> (p += 2);
+          buffer &= 15 >> (p & 2);
+        }
+        c += codeChar(c);
+        string += String.fromCharCode(c);
+      }
+      if (p) {
+        c = buffer << 6 - p;
+        c += codeChar(c);
+        string += String.fromCharCode(c) + (p & 4 ? "=" : "==");
+      }
+      return string;
+    }
+    // for Deltarealm code
+    var i, j, buffer, ship,
+      DrSHIP_DAT = {
+        block: {id: 0}, wedge: {id: 1}, wedge_1x2: {id: 2}, pyramid: {id: 3}, pyramid_1x2: {id: 4}, inverse_pyramid: {id: 5}, inverse_pyramid_1x2: {id: 6}, hydrogen_tank_small: {id: 7}, rcs_rocket_thruster_small: {id: 8}, rocket_thruster_small: {id: 9}, cockpit_fighter: {id: 10}, cockpit_cruiser: {id: 11}
+      }, NBID = {
+        0: "block", 1: "wedge", 2: "wedge_1x2", 3: "pyramid", 4: "pyramid_1x2", 5: "inverse_pyramid", 6: "inverse_pyramid_1x2", 7: "hydrogen_tank_small", 8: "rcs_rocket_thruster_small", 9: "rocket_thruster_small", 10: "cockpit_fighter", 11: "cockpit_cruiser",
+      };
+    function saveShip(name = "") {
+      if (typeof saveFile === "undefined" || typeof result === "undefined")
+        return "saveFile function unavalible";
+      if (typeof ship.name === "undefined")
+        return "ship not loaded";
+      if (name)
+        ship.name = String(name);
+      else if (ship.name.indexOf("-edited") + 1)
+        ship.name += "-edited";
+      result = JSON.stringify(ship);
+      saveFile(ship.name + ".json");
+    }
+    function blocksRotatingTest(block = "pyramid_1x2") {
+      ship = {name: 'jsonFileEdtrTests', gameVersion: '0.1',
+        dateTime: 'screw your needs for time', blocks: Array(32)}
+      for (var i = 0, b = ship.blocks; i < 64; i++) {
+        b[i] = {"internalName": block,
+          "position": [(i&3)*2+(i>>2&8)-7,(i&3)*2+(i>>2&8)-7,((i&28)>>1)-7],
+          "rotation": [(i>>4)*90,(i>>2&3)*90,(i&3)*90],
+          "properties": {}
+        };
+      }
+      if (/cockpit/.exec(block))
+        ship.blocks.forEach((b) => {
+          for (var n = 0; n < 3;)
+            b.position[n++] *= 2;
+        });
+      b.length = 64;
+    }
+    function setDrShipEdtr() {
+      ship = decodeCmprsShip(base64ToUint8array('gAALU3RhcnRlclNoaXCAAQBnyR+wATjRE/MIg+/jGIhC4AC4AAgsIpEBBBAEDoFSLDKADKAEIFCSGTKAEQAAABClwmuwSAQAIUQIkAEAGAEAACghWoXSoJToICaAFiADAHBCYCgRSlIIIQC0ABkAgBMCWIQEEZlkABkAAAAnAAAAEQAACi9AC5ABAAAA4AQAQBVKgBYAQAYAAMAJAIA4VBApQAqQAQA4AQAgKwDIAACcAAAARAAAABBoATIAAAAAnAAA2AAQKAFaAAAZAAAAJwAA4lABtAAZAAAAJwAAJAUAGQAAACcAAAARAAAKDUALkAEAAADgBABAFU6AFgBABgAAwAkAgDiAAJACZAAATgAAyAsARgAAAECMCo1BIxEAhBAhQAYAYAQAAGCFWBVOg1Oig7gALoAMAMAJsTCcCCcphBAXwAWQAQA4IRawCAkiYWQQhUABUAAQaEQiAwBBoBAoxSIDyABKAAIlTviFogQ='));
+      drawShip(480, 560, "#111133");
+    }
+    function gShip(Uint8ArrOrInput) {
+      if (Uint8ArrOrInput) {
+        if (typeof uint8array !== "object")
+          return "uint8array undefined";
+        if (typeof uint8array.BYTES_PER_ELEMENT !== "undefined")
+          for (var i = uint8array.length, s = ""; i-- > 0;)
+            s = String.fromCharCode(uint8array[i]) + s;
+        else
+          return "uint8array is not Uint8Array object";
+      } else
+        s = input.value;
+      try {
+        ship = JSON.parse(s);
+      } catch (err) {
+        if (err)
+          CMD.err(err.message + "\n\tJSON file required");
+        else
+          canvas.classList.add("mrgn10");
+      }
+    }
+    function rotateBlock(r) {
+      var i = 3, angle = [], rot = 0, // rotation, (angle → of axis)
+        face = 1, order, o_side = !1; // other/mirored side
+      r.forEach(el => {
+        el = Math.round((el % 360) / 90);
+        if (el < 0)
+          el += 4;
+        angle.push(el);
+      });
+      r = angle;
+      switch (r[0]) {
+        case 1:
+          return [2, !0, r[1] + 4 - r[2] & 3];
+        case 2:
+          r[0] = 0;
+          r[1] = r[1] + 2 & 3;
+          r[2] = r[2] + 2 & 3;
+          break;
+        case 3:
+          return [2, !1, r[1] + r[2] & 3];
+      }
+      while (i-- > 0)
+        if (r[i]) {
+          angle = r[i];
+          if (i === 1)
+            rot = (rot + angle) & 3;
+          else {
+            order = face === 0 + !i;
+            if (angle & 1)
+              face = order ? 2 : 0;
+            if (angle + order > 1 && angle + order < 4)
+              o_side = !o_side;
+            switch (i) {
+              case 1:
+                if (angle !== 2)
+                  rot += angle;
+              case 2:
+                if (o_side === !0)
+                  rot = 2;
+                break;
+            }
+          }
+        }
+      return [face, o_side, rot];
+    }
+    function drawShip(w, h, backg) {
+      if (typeof ship !== "object")
+        return "ship data required";
+      canvas.width = w;
+      canvas.height = h;
+      var w_mid = w / 2 - 8, h_mid = h / 2 - 8, path, posX, posY;
+      ctx.fillStyle = backg;
+      ctx.fillRect(0, 0, w, h);
+    }
+    function sortShip() {// sorts blocks by position x than y than z
+      var i, l, n, values, refs, b = ship.blocks, _b = [];
+      if ((l = ship.blocks.length) > 0x7fffffff)
+        return "too much blocks";
+      values = new Uint32Array(l);
+      while (l-- > 0)
+        for (i = 0; i < 3; i++) {
+          n = b[l].position[i] + 511;
+          if (n < 0 || n > 1023)
+            return "block too far in axis " + "xyz"[i] + ", l: " + l;
+          values[l] = (values[l] << 10) + n;
+        }
+      i = 0;
+      refs = [];
+      for (var u, d; i < values.length; i++) {
+        u = i;
+        d = 0;
+        while (u !== d) {
+          n = u + d >> 1;
+          if (values[refs[n]] > values[i])
+            u = n;
+          else if (values[refs[n]] < values[i])
+            d = ++n;
+          else
+            break;
+        }
+        if (u === d) {
+          for (d = refs.length; d > n; d--)
+            refs[d] = refs[d - 1];
+          refs[d] = i;
+        }
+      }
+      for (i = refs.length; i-- > 0;)
+        _b[i] = b[refs[i]];
+      ship.blocks = _b;
+      return ship;
+    }
+    function wBit(b) {
+      if (b)
+        buffer[i] |= 1 << j;
+      else
+        buffer[i] &= 255 - (1 << j)
+      if (++j > 7) {
+        i++;
+        j = 0;
+      }
+    }
+    function wBitsMSBfFast(l, n) {
+      buffer[i] |= n << j;
+      n >>= 8 - j;
+      if (l + j > 8) {
+        l -= 8 - j;
+        j = 0;
+        i++;
+        while (l > 7) {
+          buffer[i++] |= n;
+          n >>= 8;
+          l -= 8;
+        }
+        buffer[i] |= n;
+        n >>= l;
+      }
+      j += l;
+      buffer[i] &= 255 >> 8 - j;
+      if (j > 7) {
+        i++;
+        j = 0;
+      }
+      return n; // value of spare bits
+    }
+    function wMSBfirst(l, n) {
+      var _i;
+      _i = i += l;
+      while (l-- > 0) {
+        buffer[--_i] = n & 255;
+        n >>= 8;
+      }
+      return n;
+    }
+    function wVersion(arr) {
+      for (var l = 0, m = 0, n = 64; !0;) {
+        while (arr[l] >= n--)
+          n = 64 << (m += 6);
+        buffer[i++] = arr[l] >> m;
+        while (m) {
+          buffer[i - 1] |= 64;
+          m -= 6;
+          n >>= 6;
+          buffer[i++] = (arr[l] & n) >> m;
+        }
+        if (++l < arr.length)
+          buffer[i - 1] |= 128;
+        else
+          break;
+      }
+    }
+
+    function encodeCmprsShip() {
+      var l, n, id, p_i, chunkEnd, s, propertiesStr = "",
+        propertiesRef = [], b,  arr, min, max, prev, size = [], sizeB = [],
+        rot = [], kB,
+        IDLEN = 4; // id length, blocks data
+      i = j = 0;
+      buffer = new Uint8Array(1040);
+      kB = [buffer]; /* array with references to arrays with kBs
+  of file (1024 + buffer of 16 bytes) */
+      // data block: compression version
+      wVersion([0, 0]);
+      // data block: name
+      buffer[i++] = l = ship.name.length;
+      if (l > 255)
+        console.warn("too long name (" + l + ") set to: " + (l = 255));
+      for (n = 0; n < l;) {
+        s = ship.name.charCodeAt(n++);
+        buffer[i++] = s > 31 && s < 127 || s > 8 && s < 11 ? s : 64;
+      }
+      // data block: game version
+      arr = JSON.parse("[" + ship.gameVersion.replaceAll(".", ",") + "]");
+      wVersion(arr);
+      for (l = 0; l < 3 && arr.length; l++)
+        if (arr[l] > [0, 1, 2][l])
+          console.warn("unknown game version");
+      // data block: date and time (seconds from  26.1.2022 16:48 UTC)
+      wMSBfirst(4, Date.now() / 1000 - 1643215695);
+      // data block: blocks
+      sortShip();
+      b = ship.blocks;
+      // blocks lenght
+      wBit(n = (l = b.length) > 8191);
+      wBitsMSBfFast(n ? 21 : 13, l);
+      if (!l) {
+        console.log("empty ship (no blocks)");
+        if (j)
+          i++;
+        arr = new Uint8Array(i);
+        while (i-- > 0)
+          arr[i] = buffer[i];
+        return arr;
+      }
+      // ID bit length (3 bits) + 4 (IDLEN)
+      wBitsMSBfFast(3, 0);
+      min = [...b[--l].position];
+      max = [...min];
+      while (l-- > 0) {
+        arr = b[l].position;
+        for (n = 0; n < 3; n++)
+          if (arr[n] > max[n])
+            max[n] = arr[n];
+          else if (arr[n] < min[n])
+            min[n] = arr[n];
+      }
+      // pairs min and max blocks positions in each axis - xyz
+      for (n = 0, l = 6; n < 3; ++n > 1 ? l = 8 : 0) {
+        if (wBitsMSBfFast(l, min[n] + (1 << l - 1) - 1))
+          return "ship too far in axis: " + "xyz"[n];
+        if (wBitsMSBfFast(l, max[n] + (1 << l - 1) - 1))
+          return "ship too far in axis: " + "xyz"[n];
+      }
+      function fixedBlock(block) {
+        // ID
+        wBitsMSBfFast(IDLEN, id = DrSHIP_DAT[block.internalName].id);
+        // position
+        wBitsMSBfFast(8, block.position[2] + 127);
+        wBitsMSBfFast(6, block.position[1] + 31);
+        wBitsMSBfFast(6, block.position[0] + 31);
+        // rotation
+        var r = rotateBlock(block.rotation);
+        wBitsMSBfFast(5, r = r[2] | r[1] << 2 | r[0] << 3);
+        // are properties?
+        checkProperties(block.properties);
+        rot[id] = r;
+        if (j) {
+          i++;
+          j = 0;
+        }
+      }
+      function endings() {
+        // handles chunk endings, kB borders or both
+        if (i > chunkEnd) {
+          prev = [i, j, 0];
+          n = i = chunkEnd + 8;
+          j = 0;
+          wBitsMSBfFast(6, (chunkEnd << 3) + 7 - p_i);
+          fixedBlock(b[l]);
+          n = i - n;
+          i = chunkEnd + 1;
+          j = i + n;
+          chunkEnd += n + 512;
+          while(i < j) {
+            buffer[i + n] = buffer[i];
+            buffer[i] = buffer[i + 7];
+            buffer[i + 7] = 0;
+            i++;
+          }
+          i = prev[0] + n;
+          j = prev[1];
+          for (n = 1 << IDLEN; n-- > 0;)
+            rot[n] = 8;
+        }
+        if (i > 1023) {
+          prev = buffer;
+          buffer = new Uint8Array(1040);
+          p_i -= 1024; // p_i & chunkEnd should be same type (?)
+          chunkEnd -= 1024;
+          i -= 1024;
+          for (n = 0; n < 16; n++)
+            buffer[n] = prev[n | 1024];
+          kB.push(buffer);
+        }
+      }
+      function checkProperties(prpt) {
+        var n_, s = JSON.stringify(prpt);
+        // Has properties
+        wBit(s !== "{}");
+        if (s !== "{}")
+          if (n_ = propertiesStr.indexOf(s) + 1)
+            // stores properties for later
+            propertiesRef.push(n_, s.length);
+          else {
+            propertiesRef.push(propertiesStr.length, s.length);
+            propertiesStr += s;
+          }
+      }
+      // sets up ship sizes and relative rotations
+      for (n = 3; n-- > 0; sizeB[n] = l) {
+        size[n] = max[n] - min[n] + 1;
+        for (l = 8, s = 128; size[n] < s; --l)
+          s >>= 1;
+      }
+      for (n = 1 << IDLEN; n-- > 0;)
+        rot[n] = 8;
+      // first block (fixed)
+      fixedBlock(b[0]);
+      p_i = i << 3; // previous i
+      chunkEnd = i + 511;
+      // relative blocks string
+      /* would be in function instead of loop for readability */
+      for (l = 1, arr = b[0].position; l < b.length; l++) {
+        p_i = (i << 3) + j;
+        if (l === 704)
+          (""[1] + "").slice(3, 5);
+        // ID
+        wBitsMSBfFast(IDLEN, id = DrSHIP_DAT[b[l].internalName].id);
+        // relative position
+        prev = [arr[0], arr[1], arr[2]];
+        arr = b[l].position;
+        n = 2;
+        s = arr[n] - prev[n] - 1;
+        if (s < 0) {
+          s += size[n];
+          prev[1]++;
+        }
+        wBit(s);
+        if (s)
+          wBitsMSBfFast(sizeB[n], s - 1);
+        while (n-- > 0) {
+          // relative y and x position
+          if (arr[n] < prev[n]) {
+            if (n < 1)
+              return "weird error";
+            else
+              s = arr[n] + size[n] - prev[n];
+            prev[0]++;
+          } else
+            s = arr[n] - prev[n];
+          wBit(s);
+          if (s)
+            wBitsMSBfFast(sizeB[n], s - 1);
+        }
+        // optionaly relative rotation
+        n = rotateBlock(b[l].rotation);
+        n = n[2] | n[1] << 2 | n[0] << 3;
+        wBit(s = rot[id] !== n);
+        if (s)
+          wBitsMSBfFast(5, n);
+        rot[id] = n;
+        // are properties?
+        checkProperties(b[l].properties);
+        endings();
+      }
+      if (j)
+        i++;
+      chunkEnd = i - 1;
+      l--;
+      // last/ending chunk
+      endings();
+      // data block: properties
+      if (propertiesRef.length) {
+        /* just indexes and lenghts of JSON strings*/
+        s = JSON.stringify([propertiesRef, propertiesStr]);
+        for (n = 0; n < s.length;) {
+          buffer[i++] = s.charCodeAt(n++);
+          if (n > 1023) {
+            kB.push(buffer = new Uint8Array(1040));
+            i = 0;
+          }
+        }
+      }
+      // joins binary data of required lenght to one file
+      buffer = new Uint8Array((kB.length - 1 << 10) + i);
+      for (j = l = 0; l < buffer.length; kB[j++] = []) {
+        (n = buffer.length - l) > 1023 ? n = 1024 : 0;
+        arr = kB[j];
+        for (i = 0; i < n;)
+          buffer[l++] = arr[i++];
+      }
+      return buffer;
+    }
+
+    function gBit() {
+      var b_int = (buffer[i] & 1 << j) >> j;
+      if (++j > 7) {
+        j = 0;
+        i++;
+      }
+      return b_int;
+    }
+    function gMSBfirst(l) {
+      var n = 0;
+      while (l-- > 0)
+        n = n * 256 + buffer[i++];
+      return n;
+    }
+    function gBitsMSBfFast(l = 2) {
+      var mj = j, b_int = !1;
+      if (l + j > 8) {
+        b_int = buffer[i++] & 255 << j;
+        l -= 8 - j;
+        j = 8;
+        while (l > 8) {
+          b_int += (buffer[i++] << j);
+          l -= 8;
+          j += 8;
+        }
+        b_int += (buffer[i] & 255 >> (8 - l)) << j;
+      } else
+        b_int += buffer[i] & 255 >> (8 - l) << j;
+      b_int >>= mj;
+      if ((j = (j & 7) + l) > 7) {
+        i++;
+        j = 0;
+      }
+      return b_int;
+    }
+    function gVersion() {
+      var version = [], n = 0;
+      i--;
+      do {
+        version.push(0);
+        do 
+          version[n] = (version[n] << 6) + (buffer[++i] & 63);
+        while (buffer[i] & 64)
+        n++;
+      } while (buffer[i] & 128)
+      i++;
+      return version;
+    }
+    function dateTime(t) {
+      if (typeof t !== "number")
+        t = Math.floor(Date.now() / 1000);
+      var i = 0, n, s, months = [30, 27, 30, 29, 30, 29, 30, 30, 29, 30, 29, 30];
+      n = t % 60;
+      s = ":" + (n > 9 ? n : "0" + n);
+      n = (t = Math.floor(t / 60)) % 60;
+      s = ":" + (n > 9 ? n : "0" + n) + s;
+      s = " " + (t = Math.floor(t / 60)) % 24 + s;
+      n = Math.floor(t / 24);
+      s = "." + (Math.floor(n / 365.25) + 1970) + s;
+      t = n % 365.25 | 0;
+      if (n % 1461 > 789)
+        t--;
+      n = n % 1461 === 790;
+      while (t > months[i])
+        t -= months[i++] + 1;
+      s = "." + (++i > 9 ? i : "0" + i) + s;
+      t += 1 + n;
+      return (t > 9 ? "" : "0") + t + s;
+    }
+    function gBlockRotation(n) { // rotation by 5 bit index
+      if (n > 23)
+        return "invalid input";
+      var arr = [0, 0, 0]; 
+      arr[(n < 8) << 1] = [90, 270, 0, 180, 270, 90][n >> 2];
+      arr[n & 16 ? 2 : 1] = (
+        n & 4 && (n & 16 ? n & 1 : !(n & 8)) ?
+        n + 2 & 3 :
+        n & 3
+      ) * 90; 
+      return arr;
+    }
+    function decodeCmprsShip(cmprsShip) {
+      var n = 0, l, pl, chunkEnd, id, IDLEN, BLEN, s = "",
+        arr = [], prev = [], b = [], min = [],  max = [], size = [], sizeB = [],
+        rot = [], properties = [], obj, ship = {}, p_i;
+      i = j = 0;
+      if (cmprsShip !== "undefined")
+        buffer = cmprsShip;
+      // data block: compression version (and check)
+      arr = gVersion();
+      while (n < 2)
+        if (arr[n++] > 0)
+          return "unknown file vesrion";
+      // data block: name
+      l = buffer[i++];
+      while (l-- > 0)
+        s += String.fromCharCode(buffer[i++]);
+      ship.name = s;
+      // data block: game version
+      ship.gameVersion = gVersion().join(".");
+      // data block: date and time
+      /* of compression as I don't have date and time parse */
+      s = dateTime(gMSBfirst(4) + 1643215695);
+      ship.dateTime = "compressed: " + s + " UTC";
+      // data block: blocks
+      // blocks length
+      BLEN = gBitsMSBfFast(gBit() ? 21 : 13);
+      ship.blocks = b;
+      if (!BLEN) {
+        if (i > buffer.length)
+          return "unexpected end of data";
+        console.log("read empty ship (no blocks)");
+        return ship;
+      }
+      // ID bit length
+      IDLEN = gBitsMSBfFast(3) + 4;
+      // min max positions
+      for (n = 0, l = 6; n < 3; ++n > 1 ? l = 8 : 0) {
+        min[n] = gBitsMSBfFast(l);
+        max[n] = gBitsMSBfFast(l);
+        min[n] -= (1 << l - 1) - 1;
+        max[n] -= (1 << l - 1) - 1;
+      }
+      function fixedBlock(b = !0) {
+        var obj = {}, dir;
+        // ID
+        obj.internalName = NBID[id = gBitsMSBfFast(IDLEN)];
+        // position
+        obj.position = arr = [];
+        arr[2] = gBitsMSBfFast(8) - 127;
+        arr[1] = gBitsMSBfFast(6) - 31;
+        arr[0] = gBitsMSBfFast(6) - 31;
+        // rotation
+        obj.rotation = gBlockRotation(dir = gBitsMSBfFast(5));
+        obj.properties = {};
+        // has properties
+        if (gBit() && b)
+          properties.push(obj.properties);
+        if (b) { /* updates relative attributes */
+          prev = arr;
+          rot[id] = dir;
+        }
+        if (j) {
+          i++;
+          j = 0;
+        }
+        return obj;
+      }
+      function relativeBlock() {
+        p_i = (i << 3) + j;
+        var obj = {}, dir;
+        // ID
+        obj.internalName = NBID[id = gBitsMSBfFast(IDLEN)];
+        // relative x position
+        obj.position = arr = [prev[0], prev[1], prev[2]]; /* [...prev] */
+        arr[2] += gBit() ? gBitsMSBfFast(sizeB[2]) + 2 : 1;
+        if (arr[n = 2] > max[2]) {
+          arr[2] -= size[2];
+          arr[1]++;
+        }
+        while (n-- > 0) {
+          // relative y and z positions
+          arr[n] += gBit() ? gBitsMSBfFast(sizeB[n]) + 1 : 0;
+          if (arr[n] > max[n]) {
+            if (n < 1)
+              return "blocks doesn't fit in box";
+            arr[1] -= size[1];
+            arr[0]++;
+          }
+        }
+        // optionaly relative rotation
+        dir = gBit() ? gBitsMSBfFast(5) : rot[id];
+        obj.rotation = gBlockRotation(dir);
+        obj.properties = {};
+        // has properties
+        if (gBit() && i < chunkEnd)
+          properties.push(l);
+        if (i + !!j > chunkEnd) /* not on byte boundary behind chunkEnd */
+          return;
+        prev = arr;
+        rot[id] = dir;
+        b[l] = obj;
+      }
+      function chunkEnding() {
+      // handles chunk ends
+        var n_0, n_1, buf_0; /* help (next "n" variable) */
+        if (n_0 = i + !!j > chunkEnd) { /* not on byte bound... */
+          i = chunkEnd;
+          j = 0;
+        }
+        if ((--chunkEnd << 3) + 7 - p_i !== gBitsMSBfFast(6)) {
+          b[l = b.length = ++pl] = obj = fixedBlock();
+          console.warn("corrupted chunk: " + (p_i >> 13));
+        } else
+          obj = fixedBlock(!1);
+        n = rotateBlock(obj.rotation);
+        obj.rotation = gBlockRotation(n[2] | n[1] << 2 | n[0] << 3);
+        n_1 = i;
+        if (n_0) {
+          buf_0 = buffer;
+          buffer = [];
+          i = n_0 = p_i >> 3;
+          j = p_i & 7;
+          for (n = 0; i <= chunkEnd;)
+            buffer[n++] = buf_0[i++];
+          for (i = n_1; n < 8;)
+            buffer[n++] = buf_0[i++];
+          i = 0;
+          relativeBlock();
+          i += n_0 + n_1 - chunkEnd - 1;
+          buffer = buf_0;
+        }
+        chunkEnd = n_1 + 512;
+        if (JSON.stringify(obj) !== JSON.stringify(b[l])) {
+          BLEN -= l - ++pl;
+          b[l = b.length = pl] = obj;
+          console.warn("corrupted chunk: " + (p_i >> 13));
+          prev = obj.position;
+        }
+        for (n = 1 << IDLEN; n-- > 0;)
+          rot[n] = 8;
+      }
+      // sets up ship sizes and relative values
+      for (n = 3; n-- > 0; sizeB[n] = l) {
+        size[n] = max[n] - min[n] + 1;
+        for (l = 8, s = 128; size[n] < s; --l)
+          s >>= 1;
+      }
+      for (n = 1 << IDLEN; n-- > 0;)
+        rot[n] = 8;
+      // first block
+      b[pl = l = 0] = fixedBlock();
+      p_i = i << 3;
+      chunkEnd = i + 512;
+      while (++l < BLEN) {
+        if (s = relativeBlock())
+          return s;
+        if (i >= chunkEnd) /* behind chunkEnd */
+          if (s = chunkEnding())
+            return;
+      }
+      if (j) {
+        i++;
+        j = 0;
+      }
+      chunkEnd = i;
+      l--;
+      // last/ending chunk
+      chunkEnding();
+      // data block: properties
+      if (l = properties.length) {
+        for (s = ""; i < buffer.length;)
+          s += String.fromCharCode(buffer[i++]);
+        if (buffer[--i] !== 93)
+          return "unexpected end of data";
+        try {
+          arr = JSON.parse(s);
+        } catch (err) {
+          if (err) {
+            console.error(err);
+            return ship;
+          }
+        }
+        s = arr[1];
+        arr = arr[0];
+        for (i = l - 1 << 1; --l > 0; i -= 2) {
+          obj = JSON.parse(s.slice(arr[i], arr[i] + arr[i | 1]));
+          b[properties[l]].properties = obj;
+        }
+      }
+      return ship;
+    }
+    function rotationIndex(arr) { /* returns index of rotation */
+      arr = rotateBlock(arr);
+      arr = arr[2] | arr[1] << 2 | arr[0] << 3;
+      return [...gBlockRotation(arr), arr];
+    }
+  </script>
+</body>
+</html>
+<!-- #prayForUraine -->
