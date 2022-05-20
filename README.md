@@ -17,3 +17,5 @@ List of elememnts in there:
 7. 'my ships': buttons loading other ship stored in this html document.
 8. 'for ships' functions: buttons allowing to: open more ship at once and replace current 'my ships' with them, opening more throught csv file of ships, adding loaded ship to 'my ships', creates file of ships from 'my ships' (appears in file output'.
 9. If functions aren't used properly or error occurs the error will appear below.
+
+Link to this [Deltarealm ship base64 keys tool](https://KaaBEL.github.io/Deltarealm-b64-keys) as GitHub page.
