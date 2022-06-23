@@ -51,7 +51,7 @@
     var file = {input: file, a: []};
     function fileOpener(f, e, f_ = function () {}, el = null, more = !1) {
     // f = function with Uint8Array input argument executed on file load,
-    // return false when wrong file format
+    // return true when wrong file format
     // e = error for no file of expected format found
     // f_ = function executed after everything is done
     // more = true if more all files needs to be processed
@@ -59,14 +59,14 @@
       if (!file.a.length)
         return CMD.err('No files chosen');
       function customLoader(f, e, f_, el, more) {
-       this.i = this.succ = 0;
-       this.fun = f;
-       this.err = e;
-       this.fin = f_;
-       this.loadbar = el;
-       this.more = more;
-       this.input =  file.input;
-       this.a = file.a;
+        this.i = this.succ = 0;
+        this.fun = f;
+        this.err = e;
+        this.fin = f_;
+        this.loadbar = el;
+        this.more = more;
+        this.input =  file.input;
+        this.a = file.a;
       }
       function readFile(cL) {
         var reader = new FileReader();
@@ -298,9 +298,9 @@
             if (c > 31 && c < 127)
               s += String.fromCharCode(c);
             else
-              return !1;
+              return !0;
           if (i >= l)
-            return !1;
+            return !0;
           myShips.push(s.replaceAll('\\\\', '\\').replaceAll('\\c', ','));
           for (s = ''; i < l && (c = ubyteArr[i++]) !== 44;)
             if (
@@ -312,7 +312,7 @@
             )
               s += String.fromCharCode(c);
             else
-              return !1;
+              return !0;
           myShips.push(s);
         }
         setupShips();
