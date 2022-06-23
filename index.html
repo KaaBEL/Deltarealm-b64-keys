@@ -5,91 +5,115 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compressor</title>
-  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAGFJREFUOE9j/A8EDFgAIxBgE0cXY8RlAEwhIYPgBqArhBlMtgEgFxBjCE4X0MQAZBfB2ficiS6HLcBJ8gKyAbDAJcsA5JghKRqxeZekhESSAdgSEFYDiEnv+NQQlWEGtwEASjlwCe0PD/kAAAAASUVORK5CYII=">
-<style>body{margin: 0px;background-color: #000;}.none{display: none !important;}.mrgn10{margin: 10px;}canvas{image-rendering: -o-pixelated;image-rendering: pixelated;}.RL-divide{display: flex;flex-direction: row;width: fit-content;align-items: stretch;padding: 10px;}.CMD-chat{width: 330px;margin-top: 4px;position: relative;display: flex;display: -webkit-box;display: -ms-flexbox;-webkit-box-orient: vertical;-ms-flex-direction: column;flex-direction: column;color: #fff;font-family: monospace;font-size: 16px;}.CMD-log-outer{width: 330px;min-height: 0;position: relative;-ms-flex: 1 1 auto;flex: 1 1 auto;-webkit-box-flex: 1;overflow-y: auto;overflow-x: hidden;background-color: #323232;}.CMD-log-view{min-width: 0;min-height: 0;position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow: hidden scroll;}.CMD-log-tobottom{min-height: 100%;position: relative;display: flex;flex-direction: column;justify-content: flex-end;align-items: stretch;-ms-flex-direction: column;-ms-flex-pack: end;-ms-flex-align: stretch;-webkit-box-align: stretch;-webkit-box-direction: normal;-webkit-box-orient: vertical;-webkit-box-pack: end;}.CMD-log-fit{min-height: 0;}.CMD-log{height: fit-content;width: 313px;padding: 5px 0;overflow-wrap: break-word;word-break: break-all;}.CMD-log > div{padding: 4px 10px;}.CMD-line-bar{width: 320px;padding: 10px 0 10px 10px;background-color: #242424;}.CMD-line{width: 310px;max-height: 150px;padding-right: 10px;outline: none;}.CMDscrl{overflow-y: auto;overflow-x: hidden;}.CMDscrl::-webkit-scrollbar{width:17px;background-color: #0000;}.CMDscrl::-webkit-scrollbar-thumb{width:17px;background-color: #111;}.red{background-color: #510;color: #faa;}.yel{background-color: #440;color: #ffa;}.grn{background-color: #150;;color: #afa}._13{transform: translateY(3.85px);}.CMD-log input{width: calc(100% - 10px);height: 16px;border: none;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, "Courier New", sans-serif;}.CMD-log .inp a{display: inline-block;height: 21px;padding: 7px 5px 4.5px 5px;}.inp span{line-height: 32px;display: content;}.CMD-log > div > div, .CMD-log input, .CMD-log a{padding: 5px;}.CMD-log button, .CMD-log a{height: 32px;border: none;background-color: #505050;color: #fff;font-size: 16px;font-family: monospace, "Curier New", sans-serif;}.CMD-log button:hover, .CMD-log button:focus, .CMD-log a:hover, .CMD-log a:focus{background-color: #5f5f5f;}.CMD-log button:active, .CMD-log a:active{background-color: #454545;user-select: none;}.CMD-log .inp{width: calc(100% - 10px);min-height: 0px;max-height: 999999px;padding: 0 5px;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, sans-serif;}.inps{display: flex;overflow-wrap: normal;word-break: keep-all;}.CMD-log .inps div{padding: 0;}.CMD-log .inps div div:first-child{padding: 0 0 5px 5px;}.inps > div:not(:last-child) {padding-right: 10px;}.narrow {width: 70px;}input[type="color"]{height: 29px;width: 111%;padding: 0 3px;}.wide{width: 50%;}.inp button, .inp a{position: relative;left: -5px;top: 0;}.loadbox{width: 300px;height: 32px;position: fixed;top: 50%;right: 50%;transform: translate(50%, 50%);background-color: #111111;}div.loading{width: fit-content;height: fit-content;padding: 0;position: relative;background-color: #505050;}div.loading div:nth-child(1){height: 100%;padding: 0;position: absolute;top: 0;left: 0;background-color: #474;transition: 0.15s;}div.loading div:nth-child(2){width: fit-content;padding: 1.5px 1px;height: 19px;z-index: 1;position: relative;background-color: #0000;}</style>
+  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/751449529789841428/987264320318607390/Dr.png">
+  <style>body{margin: 0px;background-color: #000;}.none{display: none !important;}.mrgn10{margin: 10px;}canvas{image-rendering: -o-pixelated;image-rendering: pixelated;}.RL-divide{display: flex;flex-direction: row;width: fit-content;align-items: stretch;padding: 10px;}.CMD-chat{width: 330px;margin-top: 4px;position: relative;display: flex;display: -webkit-box;display: -ms-flexbox;-webkit-box-orient: vertical;-ms-flex-direction: column;flex-direction: column;color: #fff;font-family: monospace;font-size: 16px;}.CMD-log-outer{width: 330px;min-height: 0;position: relative;-ms-flex: 1 1 auto;flex: 1 1 auto;-webkit-box-flex: 1;overflow-y: auto;overflow-x: hidden;background-color: #323232;}.CMD-log-view{min-width: 0;min-height: 0;position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow: hidden scroll;}.CMD-log-tobottom{min-height: 100%;position: relative;display: flex;flex-direction: column;justify-content: flex-end;align-items: stretch;-ms-flex-direction: column;-ms-flex-pack: end;-ms-flex-align: stretch;-webkit-box-align: stretch;-webkit-box-direction: normal;-webkit-box-orient: vertical;-webkit-box-pack: end;}.CMD-log-fit{min-height: 0;}.CMD-log{height: fit-content;width: 313px;padding: 5px 0;overflow-wrap: break-word;word-break: break-all;}.CMD-log > div{padding: 4px 10px;}.CMD-line-bar{width: 320px;padding: 10px 0 10px 10px;background-color: #242424;}.CMD-line{width: 310px;max-height: 150px;padding-right: 10px;outline: none;}.CMDscrl{overflow-y: auto;overflow-x: hidden;}.CMDscrl::-webkit-scrollbar{width:17px;background-color: #0000;}.CMDscrl::-webkit-scrollbar-thumb{width:17px;background-color: #111;}.red{background-color: #510;color: #faa;}.yel{background-color: #440;color: #ffa;}.grn{background-color: #150;;color: #afa}._13{transform: translateY(3.85px);}.CMD-log input{width: calc(100% - 10px);height: 16px;border: none;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, "Courier New", sans-serif;}.CMD-log .inp a{display: inline-block;height: 21px;padding: 7px 5px 4.5px 5px;}.inp span{line-height: 32px;display: content;}.CMD-log > div > div, .CMD-log input, .CMD-log a{padding: 5px;}.CMD-log button, .CMD-log a{height: 32px;border: none;background-color: #505050;color: #fff;font-size: 16px;font-family: monospace, "Curier New", sans-serif;}.CMD-log button:hover, .CMD-log button:focus, .CMD-log a:hover, .CMD-log a:focus{background-color: #5f5f5f;}.CMD-log button:active, .CMD-log a:active{background-color: #454545;user-select: none;}.CMD-log .inp{width: calc(100% - 10px);min-height: 0px;max-height: 999999px;padding: 0 5px;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, sans-serif;}.inps{display: flex;overflow-wrap: normal;word-break: keep-all;}.CMD-log .inps div{padding: 0;}.CMD-log .inps div div:first-child{padding: 0 0 5px 5px;}.inps > div:not(:last-child) {padding-right: 10px;}.narrow {width: 70px;}input[type="color"]{height: 29px;width: 111%;padding: 0 3px;}.wide{width: 50%;}.inp button, .inp a{position: relative;left: -5px;top: 0;}.loadbox{width: 300px;height: 32px;position: fixed;top: 50%;right: 50%;transform: translate(50%, 50%);background-color: #111111;}div.loading{width: fit-content;height: fit-content;padding: 0;position: relative;background-color: #505050;}div.loading div:nth-child(1){height: 100%;padding: 0;position: absolute;top: 0;left: 0;background-color: #474;transition: 0.15s;}div.loading div:nth-child(2){width: fit-content;padding: 1.5px 1px;height: 19px;z-index: 1;position: relative;background-color: #0000;}</style>
 </head>
 <body onload="init();">
   <div class="RL-divide"><div id="11"><canvas id="0" class="_13" width="480" height="560"></canvas></div><div class="CMD-chat"><div class="CMD-log-outer"><div class="CMD-log-view CMDscrl"><div class="CMD-log-tobottom"><div id="12" class="CMD-log"><div><div title="mostly for base64">input:</div><input id="1" title="typical input element to not flood console with long strings"></div><div><div title="for opening Deltarealm json ships">file input:</div><div class="inp"><button id="3">Upload</button><span></span></div></div><div><div title="some of what the code can be used for">ship functions:</div><button id="4" title="sets shipt to one from base64">Load ship from Base64</button><div></div><button id="5" title="sets ship to one from file">Load ship from JSON file</button><div></div><button id="6" title="sets input to base64 of actual ship (variable ship can be accesed in console)">base64 of ship</button><div></div><button id="7" title="sets file output to actual ship json than drawed ship png">JSON file of ship</button></div><div><div title="name of actual ship">ship.name:</div><input id="15" type="text" title="encodes ship with this ship.name (just edits name)"></div><div class="inps" title="inputs for my drawShip function"><div class="narrow"><div>width:</div><input id="16" type="number"></div><div class="narrow"><div>height:</div><input id="17" type="number"></div><div class="wide"><div>backg.-color:</div><input id="18" type="text"></div></div><div><div title="after clicking JSON file of ship file waits here to be downloaded throught download link">file output:</div><div class="inp"><a id="8" class="none" title="doubleclick to download 2 instantly (xD)">Download</a><span>no file to download</span></div></div><div id="9"><div title="417kB of ships within 50kB of html with its coding and decoding">my ships:</div></div><div><div title="some of what the code can be used for">for ships:</div><button id="19" title="sets 'my ships' to ships from multiple JSON files">Load ships from files</button><div></div><button id="20" title="sets 'my ships' ships from first csv file">Load ships from csv file</button><div></div><button id="21" title="adds loaded ship to 'my ships'">add ship to ships</button><div></div><button id="22" title="sets file output to csv file of all of 'my ships'">csv file of all ships</button></div></div></div></div></div><div class="CMD-line-bar"><div id="13" contenteditable="true" class="CMD-line CMDscrl"><span></span><span style="color: #999; font-size: 16px;">not working command line</span><span></span></div><div class="CMD-line-btns none">comming spoon</div></div></div><input id="2" class="none" type="file" multiple></div>
   <script>
     "use strict";
-    function GE(e=!1){if(e!==!1)_ge=e;return document.getElementById(_ge++);}
+    function GE(v) {var t=typeof v;return document.getElementById(t==='number'&&v>=v?(_ge=v+1)-1:t==='undefined'?v=_ge++:v);}
     var _ge, hex = {}, canvas = GE(0), ctx, input = GE(), file = GE(), uint8array, uploadBtn = GE(), downl = GE(8), CMD = {}, CMDlog = GE(12), CMDline = GE(), shipName = GE(15), canW = GE(), canH = GE(), cBC = GE(), toDownload;
     function QS(s) {return document.querySelector(s);}
     ctx = canvas.getContext('2d');
-    (()=>{for(var i=16,s="0123456789abcdef";i-->0;){hex[i]=s[i];hex[s[i]]=i;}})();
-    function hexColor(arr = [0,0,0]) {
+    (function(){for(var i=16,s="0123456789abcdef";i-->0;){hex[i]=s[i];hex[s[i]]=i;}})();
+    function hexColor(arr) {
+      if(typeof arr==='undefined')arr = [0,0,0];
       for (var i = 0, clr = "#"; i < arr.length; i++)
       clr += "" + hex[arr[i] >> 4] + hex[arr[i] & 15];
       return clr;
     }
-    CMD.err = function (...args) {
+    function args(arg) {
+      for (var i = arg.length, a = []; i-- > 0;)
+        a[i] = arg[i];
+      return a;
+    }
+    CMD.err = function () {
       var el = document.createElement('div');
-      el.textContent = args.join(" ");
+      el.textContent = args(arguments).join(" ");
       el.classList.add("red");
       CMDlog.appendChild(el);
       setTimeout(function () {
         CMDlog.parentElement.parentElement.scrollTop = CMDlog.offsetHeight;
       }, 0);
     }
-    CMD.log = function (...args) {
+    CMD.log = function () {
       var el = document.createElement('div');
-      el.textContent = args.join(" ");
+      el.textContent = args(arguments).join(" ");
       CMDlog.appendChild(el);
       CMDlog.parentElement.parentElement.scrollTop = CMDlog.offsetHeight;
     }
-    window.onerror = (m,s,l,c,e) => {
-      CMD.err(`${m}\n`+s+`\n${l}\n${c}\n${e}`);
+    window.onerror = function (m,s,l,c,e) {
+      CMD.err(m+"\n"+s+"\n"+l+"\n"+c+"\n"+e);
     };
   </script><script>
-    var file = {input: file, a: [], i: 0, succ: 0, fun: function() {}, err: "", fin: function() {}, loadbar: null, more: !1}
+    "use strict";
+    var file = {input: file, a: []};
     function fileOpener(f, e, f_ = function () {}, el = null, more = !1) {
+    // f = function with Uint8Array input argument executed on file load,
+    // return false when wrong file format
+    // e = error for no file of expected format found
+    // f_ = function executed after everything is done
+    // more = true if more all files needs to be processed
+    // el = element on which loadbar will appear if given (mostly button)
       if (!file.a.length)
         return CMD.err('No files chosen');
-      if (el !== null && file.loadbar !== null) return;
-      function readFile() {
+      function customLoader(f, e, f_, el, more) {
+       this.i = this.succ = 0;
+       this.fun = f;
+       this.err = e;
+       this.fin = f_;
+       this.loadbar = el;
+       this.more = more;
+       this.input =  file.input;
+       this.a = file.a;
+      }
+      function readFile(cL) {
         var reader = new FileReader();
-        reader.readAsArrayBuffer(file.input.files[file.i]);
+        reader.cLoader = cL;
+        reader.readAsArrayBuffer(cL.a[cL.i]);
         reader.addEventListener("loadend", function() {
-          var next = file.fun(new Uint8Array(reader.result));
-          if (file.loadbar !== null)
-            file.loadbar.style.width = `${file.i / file.a.length * 100}%`;
-          file.succ |= !next;
-          if (next || file.more)
-            if (++file.i < file.a.length)
-              return setTimeout(readFile, 0);
-            else if (file.succ)
-              file.fin();
+          cL = this.cLoader;
+          var next = cL.fun(new Uint8Array(reader.result), cL.more);
+          if (cL.loadbar !== null)
+            cL.loadbar.style.width = `${cL.i / cL.a.length * 100}%`;
+          cL.succ |= !next;
+          if (next || cL.more)
+            if (++cL.i < cL.a.length)
+              return readFile(cL);
+            else if (cL.succ)
+              cL.fin();
             else
-              CMD.err(file.err);
+              CMD.err(cL.err);
           else
-            file.fin();
-          if (file.loadbar !== null) {
-            var st = file.loadbar.style;
-            if (!file.succ)
+            cL.fin();
+          if (cL.loadbar !== null) {
+            var st = cL.loadbar.style;
+            if (!cL.succ)
               st['background-color'] = '#744';
             st.width = '100%';
             st.visibility = 'hidden';
             st.transition = '0.3s';
             setTimeout(function () {
-              var el = file.loadbar.parentElement;
+              var el = cL.loadbar.parentElement;
               el.nextElementSibling.classList.remove('none');
               el.remove();
-              file.loadbar = null;
+              //cL.loadbar = null;
             }, 350);
           }
         }, false);
       }
-      file.i = file.succ = 0, file.fun = f; file.err = e;
-      file.fin = f_, file.loadbar = el, file.more = more;
-      if (file.loadbar !== null) {
-        var bar = file.loadbar, el = document.createElement('div');
+      var cL = new customLoader(f, e, f_, el, more);
+      if (cL.loadbar !== null) {
+        var bar = cL.loadbar;
+        el = document.createElement('div');
         el.classList.add('loading');
         el.innerHTML = '<div></div><div>' + bar.textContent + '</div>';
         bar.before(el);
         bar.classList.add('none');
-        file.loadbar = el.childNodes[0];
+        cL.loadbar = el.childNodes[0];
       }
-      readFile();
+      readFile(cL);
     }
     file.input.addEventListener("change", (e) => {
       if ((file.a = file.input.files).length > 1)
@@ -121,14 +145,15 @@
       })*/
     }
     function init() {
+      // UI buttons
       var delay = 0;
       uploadBtn.onclick = function () {
         if (delay < Date.now()) {
           file.input.click();
           delay = Date.now() + 900;
         }
-      }
-      function shipJSON(ubyteArr) {
+      };
+      function shipJSON(ubyteArr, more) {
         if (ubyteArr[0] !== 123 || ubyteArr[ubyteArr.length - 1] !== 125)
           return !0;
         for (var i = ubyteArr.length, s = ""; i-- > 0;)
@@ -138,13 +163,15 @@
         } catch (err) {
           CMD.err(err);
         }
-        if (file.more)
+        if (more)
           if (typeof (s = encodeCmprsShip()) === 'string')
             CMD.err(s);
           else
             myShips.push(ship.name, uint8arrayToBase64(s));
       }
       GE(4).onclick = function () {
+        if (!input.value.length)
+          return CMD.err("no base64 presented")
         var result = base64ToUint8array(input.value);
         if (typeof result === "string")
           return CMD.err(result);
@@ -154,13 +181,13 @@
         ship = result;
         shipName.value = ship.name;
         drawShip(canW.value, canH.value, cBC.value);
-      }
+      };
       GE().onclick = function () {
         fileOpener(shipJSON, "No ship JSON file chosen", function() {
           shipName.value = ship.name;
           drawShip(canW.value, canH.value, cBC.value);
         }, this);
-      }
+      };
       GE().onclick = function () {
         if (shipName.value)
           ship.name = shipName.value;
@@ -168,7 +195,7 @@
         if (typeof result === "string")
           return CMD.err(result);
         input.value = uint8arrayToBase64(result);
-      }
+      };
       GE().onclick = function () {
         if (shipName.value)
           ship.name = shipName.value;
@@ -192,7 +219,7 @@
         ctx.putImageData(new ImageData(uint8clarr, h, w), 0, 0);
         toDownload.push(s + ".png", canvas.toDataURL("image/png"));
         drawShip(canW.value, canH.value, cBC.value);
-      }
+      };
       GE().onclick = function () {
         downl.href = toDownload.shift();
         if (toDownload.length) 
@@ -202,7 +229,7 @@
           }, 0);
         downl.classList.add("none");
         downl.nextElementSibling.textContent = "no file to download";
-      }
+      };
       var i = 0, el, btns = GE(), myShips = [
         "Klllsec",
         "gAAHS0lJSXNlY4CBAQBoTcVwA6a1C+EOJw+cIIVQoTMBiQlgthMKnAqhQqcCQoRFYUKgAIFAhcAEdGY5BwuoFBYyUCEQCCEyARAEQBAAQYBAZzAaXKY4h8IB0UKcAAsCEgAiEwghCIAgAIIACAKVwgJxwuQAqCBaiBMiIwEgCIQQBEAQAEEABIEKIoR4GS6EywxlQ+hQysFwACQQI8AJ0Qp0LKASSBVGAQoEKBCgQIBCBXFCvBAEShMUChtBB1dWiBcggTghWoACoAMAAADACxABAJgAAAAAcUGAoBAJRGAonUCHDhKEjnUcAAfECtECtBAnQAEA4AUAgCESAZMAAQgRShiQsjFsECXCpwpahRShkR0AEoAW4gUoAF4ADBEKiMw5OhlC4SMHkwwB0AJggAKgMiQQH8TE0KGAznwkIiCBeBwKgUuhUujURwJRKrwGr0wBkCicCBE5QwaQASwQIQSGxgR88oPDAkAVRAhAR+LAAcAiUwBUANDJQXAhBKQlA1gAABQEnRzhAGCxAURABD4SBw4AFpnCAUAhUwAgiEhKBpABLBAgMHQmYJEfHABQBRcC0JE4cACwyBQAFQB0MhFMCBFqySAWCAwNCmjMxyMCCggOgcCkMCl86uOBKBUauQKgU7gQAjOUT4ZQWMjBJUMArAAYAhQAheVheCAgLKpgVXgROtkBAACIFaBT6AAKhgAFBKArnUCKDjKEB+V9pAGGdUwAK8QKAQDECVAAAAAAAEMgAkYBAhAClHCZoKwKK0EHV1YIAB3ECbECrAAFAAAAAAAAAAAAAAAQAwQICoFAZIYCoUEpE8MEsEKUACfECtCxgEKgU5gEKBCgQIACAQogTogVgkAEi3MCrBArxAlRkYAKgkAIQQAEARAEQBAAcUKsDAPCYIZTKBQQIE6GD+EjASAqARAEQBAAQQAEAQoNxGmSgwUUpAACARCVAAgCIAiAIECgM2AwmOaMAqPCofCpgAqBwohAAQKBEIEJ+Mx1KoVK4TMBjwkA0PyB6wE=",
@@ -242,8 +269,8 @@
           if (typeof s === 'string')
             return CMD.err(s);
           shipName.value = (ship = s).name;
-          drawShip(canW.value, canH.value, cBC.value)
-        }
+          drawShip(canW.value, canH.value, cBC.value);
+        };
         btns.appendChild(el);
         el = document.createElement("span");
         el.textContent = myShips[i++];
@@ -263,20 +290,35 @@
         myShips = [];
         i = 0;
         fileOpener(shipJSON, "No ship JSON files chosen", setupShips, this, !0);
+      };
+      function loadShipsCSV(ubyteArr) {
+        myShips = [];
+        for (var i = 0, l = ubyteArr.length, c, s; i < l;) {
+          for (s = ''; i < l && (c = ubyteArr[i++]) !== 44;)
+            if (c > 31 && c < 127)
+              s += String.fromCharCode(c);
+            else
+              return !1;
+          if (i >= l)
+            return !1;
+          myShips.push(s.replaceAll('\\\\', '\\').replaceAll('\\c', ','));
+          for (s = ''; i < l && (c = ubyteArr[i++]) !== 44;)
+            if (
+              c > 64 ?
+                (c | 32) > 96 && (c | 32) < 123 :
+                c < 58 ?
+                  c > 46 || c === 43 :
+                  c === 61
+            )
+              s += String.fromCharCode(c);
+            else
+              return !1;
+          myShips.push(s);
+        }
+        setupShips();
       }
       GE().onclick = function () {
-        fileOpener(function (ubyteArr) {
-          var i = ubyteArr.length, s = '';
-          for (i < 32 ? 0 : i = 32; i-- > 0;)
-            if (ubyteArr[i] < 32 || ubyteArr[i] > 126)
-              return !0;
-          while (++i < ubyteArr.length)
-            s += String.fromCharCode(ubyteArr[i]);
-          if (!/^[ -~]+?,(?:\w|[+/])+={0,2}(?:,[ -~]+?,(?:\w|[+/])+={0,2})*$/.exec(s))
-            return !0;
-          myShips = s.split(',');
-          setupShips();
-        }, "No csv ships file Chosen", function() {}, this);
+        fileOpener(loadShipsCSV, "No csv ships file Chosen", function() {}, this);
       };
       GE().onclick = function () {
         var s = shipName.value, v = encodeCmprsShip();
@@ -286,14 +328,20 @@
         myShips.push(s ? s : ship.name, uint8arrayToBase64(v));
         btns.appendChild(document.createElement("div"));
         setupShips();
-      }
+      };
       GE().onclick = function () {
-        toDownload = ['data:text/csv;utf8,' + myShips.join(',')];
-        var s = input.value;
+        for (var i = 0, c, s = ''; i < myShips.length;) {
+          c = myShips[i++];
+          s += ',' + (i & 1 ?
+            c.replaceAll('\\', '\\\\').replaceAll(',', '\\c') :
+            c);
+        }
+        toDownload = ['data:text/csv;utf8' + s];
+        s = input.value;
         s = s.length && s.length < 128 ? s.replaceAll(',', '') : 'DltrShips';
         downl.nextElementSibling.textContent = downl.download = s + ".csv";
         downl.classList.remove("none");
-      }
+      };
 
       setDrShipEdtr();
       shipName.value = ship.name;
