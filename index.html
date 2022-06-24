@@ -291,9 +291,24 @@
         i = 0;
         fileOpener(shipJSON, "No ship JSON files chosen", setupShips, this, !0);
       };
-      function loadShipsCSV(ubyteArr) {
-        myShips = [];
-        for (var i = 0, l = ubyteArr.length, c, s; i < l;) {
+      function loadShipsCSV(ubyteArr) { /* compressed weirdocode */
+        var b = 2, i = 0, j = 0, l = ubyteArr.length, c, req, ships = [];
+        l > 64 ? l = 64 : 0;
+        while (b) {
+          if (ubyteArr[i++] !== 34)
+            break;
+          req = --b ? [110, 97, 109, 101] : [100, 97, 116, 97];
+          while (i < l && (c = ubyteArr[i++]) !== 34)
+            if (j < 4 && c !== req[j++])
+              j = 0;
+          if (j < 4 || ++i >= l || ubyteArr[i - 1] !== (b ? 44 : 10))
+            break;
+        }
+        if (i >= (l = ubyteArr.length))
+          return !0;
+        if (b)
+          i = 0;
+        for (var s; i < l;) {
           for (s = ''; i < l && (c = ubyteArr[i++]) !== 44;)
             if (c > 31 && c < 127)
               s += String.fromCharCode(c);
@@ -301,8 +316,8 @@
               return !0;
           if (i >= l)
             return !0;
-          myShips.push(s.replaceAll('\\\\', '\\').replaceAll('\\c', ','));
-          for (s = ''; i < l && (c = ubyteArr[i++]) !== 44;)
+          ships.push(s.replaceAll('\\\\', '\\').replaceAll('\\c', ','));
+          for (s = ''; i < l && (c = ubyteArr[i++]) !== 44 && c !== 10;)
             if (
               c > 64 ?
                 (c | 32) > 96 && (c | 32) < 123 :
@@ -313,8 +328,9 @@
               s += String.fromCharCode(c);
             else
               return !0;
-          myShips.push(s);
+          ships.push(s);
         }
+        myShips = ships;
         setupShips();
       }
       GE().onclick = function () {
@@ -332,11 +348,12 @@
       GE().onclick = function () {
         for (var i = 0, c, s = ''; i < myShips.length;) {
           c = myShips[i++];
-          s += ',' + (i & 1 ?
-            c.replaceAll('\\', '\\\\').replaceAll(',', '\\c') :
-            c);
+          s += i & 1 ?
+            c.replaceAll('\\', '\\\\').replaceAll(',', '\\c') + ',':
+            c + '\n';
         }
-        toDownload = ['data:text/csv;utf8' + s];
+        '"ship_name","base64_data"\n';
+        toDownload = ['data:text/csv;utf8,"ship_name","base64_data"\n' + s];
         s = input.value;
         s = s.length && s.length < 128 ? s.replaceAll(',', '') : 'DltrShips';
         downl.nextElementSibling.textContent = downl.download = s + ".csv";
