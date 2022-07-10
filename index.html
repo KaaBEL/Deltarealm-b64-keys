@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- from random version: 1.0.7 to v.1.0.9 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,13 +13,21 @@
   <div class="RL-divide"><div id="11"><canvas id="0" class="_13" width="480" height="560"></canvas></div><div class="CMD-chat"><div class="CMD-log-outer"><div class="CMD-log-view CMDscrl"><div class="CMD-log-tobottom"><div id="12" class="CMD-log"><div><div title="mostly for base64">input:</div><input id="1" title="typical input element to not flood console with long strings"></div><div><div title="for opening Deltarealm json ships">file input:</div><div class="inp"><button id="3">Upload</button><span></span></div></div><div><div title="some of what the code can be used for">ship functions:</div><button id="4" title="sets shipt to one from base64">Load ship from Base64</button><div></div><button id="5" title="sets ship to one from file">Load ship from JSON file</button><div></div><button id="6" title="sets input to base64 of actual ship (variable ship can be accesed in console)">base64 of ship</button><div></div><button id="7" title="sets file output to actual ship json than drawed ship png">JSON file of ship</button></div><div><div title="name of actual ship">ship.name:</div><input id="15" type="text" title="encodes ship with this ship.name (just edits name)"></div><div class="inps" title="inputs for my drawShip function"><div class="narrow"><div>width:</div><input id="16" type="number"></div><div class="narrow"><div>height:</div><input id="17" type="number"></div><div class="wide"><div>backg.-color:</div><input id="18" type="text"></div></div><div><div title="after clicking JSON file of ship file waits here to be downloaded throught download link">file output:</div><div class="inp"><a id="8" class="none" title="doubleclick to download 2 instantly (xD)">Download</a><span>no file to download</span></div></div><div id="9"><div title="417kB of ships within 50kB of html with its coding and decoding">my ships:</div></div><div><div title="some of what the code can be used for">for ships:</div><button id="19" title="sets 'my ships' to ships from multiple JSON files">Load ships from files</button><div></div><button id="20" title="sets 'my ships' ships from first csv file">Load ships from csv file</button><div></div><button id="21" title="adds loaded ship to 'my ships'">add ship to ships</button><div></div><button id="22" title="sets file output to csv file of all of 'my ships'">csv file of all ships</button></div></div></div></div></div><div class="CMD-line-bar"><div id="13" contenteditable="true" class="CMD-line CMDscrl"><span></span><span style="color: #999; font-size: 16px;">not working command line</span><span></span></div><div class="CMD-line-btns none">comming spoon</div></div></div><input id="2" class="none" type="file" multiple></div>
   <script>
     "use strict";
-    function GE(v) {var t=typeof v;return document.getElementById(t==='number'&&v>=v?(_ge=v+1)-1:t==='undefined'?v=_ge++:v);}
-    var _ge, hex = {}, canvas = GE(0), ctx, input = GE(), file = GE(), uint8array, uploadBtn = GE(), downl = GE(8), CMD = {}, CMDlog = GE(12), CMDline = GE(), shipName = GE(15), canW = GE(), canH = GE(), cBC = GE(), toDownload;
+    function GE(v) {var t=typeof v;return document.getElementById(t==="number"&&v>=v?(_ge=v+1)-1:t==="undefined"?v=_ge++:v);}
+    var _ge, hex = {}, U = "undefined";
+    var canvas = GE(0), ctx, input = GE(), file = GE(), uint8array, uploadBtn = GE(), downl = GE(8), CMD = {}, CMDlog = GE(12), CMDline = GE(), shipName = GE(15), canW = GE(), canH = GE(), cBC = GE(), toDownload, autoScroll;
     function QS(s) {return document.querySelector(s);}
-    ctx = canvas.getContext('2d');
+    ctx = canvas.getContext("2d");
     (function(){for(var i=16,s="0123456789abcdef";i-->0;){hex[i]=s[i];hex[s[i]]=i;}})();
+    function forEach(f, t) {
+      for (var i = 0, l = this.length; i < l; i++)
+        if (Object.hasOwnProperty.call(this, i))
+          f.call(t, this[i], i, this);
+    }
+    if (typeof [].forEach === U)
+      Array.prototype.forEach = forEach;
     function hexColor(arr) {
-      if(typeof arr==='undefined')arr = [0,0,0];
+      if(typeof arr === U) arr = [0,0,0];
       for (var i = 0, clr = "#"; i < arr.length; i++)
       clr += "" + hex[arr[i] >> 4] + hex[arr[i] & 15];
       return clr;
@@ -28,27 +37,49 @@
         a[i] = arg[i];
       return a;
     }
-    CMD.err = function () {
+    CMD.autoScroll = 1;
+    function scrollBottom() {
+      var b = arguments.length ? arguments[0] : 0;
+      if (CMD.autoScroll + b > 1)
+        setTimeout(function () {
+          CMDlog.parentNode.parentNode.scrollTop = CMDlog.offsetHeight;
+        }, 0);
+    }
+    function message(strarg, cls, priority) {
       var el = document.createElement('div');
-      el.textContent = args(arguments).join(" ");
-      el.classList.add("red");
+      el.innerText = args(strarg).join(" ");
       CMDlog.appendChild(el);
-      setTimeout(function () {
-        CMDlog.parentElement.parentElement.scrollTop = CMDlog.offsetHeight;
-      }, 0);
+      if (cls)
+        el.classList.add(cls);
+      scrollBottom(priority);
     }
     CMD.log = function () {
-      var el = document.createElement('div');
-      el.textContent = args(arguments).join(" ");
-      CMDlog.appendChild(el);
-      CMDlog.parentElement.parentElement.scrollTop = CMDlog.offsetHeight;
-    }
+      message(arguments, "", !1);
+    };
+    CMD.warn = function () {
+      message(arguments, "yel", !1);
+    };
+    CMD.err = function () {
+      message(arguments, "red", !0);
+    };
     window.onerror = function (m,s,l,c,e) {
       CMD.err(m+"\n"+s+"\n"+l+"\n"+c+"\n"+e);
     };
+    function del(i) {
+      while (++i < this.length)
+        this[i - 1] = this[i];
+      return --this.length;
+    }
   </script><script>
     "use strict";
     var file = {input: file, a: []};
+    function fileNames() {
+      var i = 0, p, s = "", a = file.files, o = file.open;
+      p = o.length > 1 ? "\"" : "";
+      while (i < o.length)
+        s += (i ? " " + p : p) + a[o[i++]].name + p;
+      uploadBtn.nextSibling.textContent = s;
+    }
     function fileOpener(f, e, f_ = function () {}, el = null, more = !1) {
     // f = function with Uint8Array input argument executed on file load,
     // return true when wrong file format
@@ -56,30 +87,44 @@
     // f_ = function executed after everything is done
     // more = true if more all files needs to be processed
     // el = element on which loadbar will appear if given (mostly button)
-      if (!file.a.length)
+      if (!file.files.length)
         return CMD.err('No files chosen');
       function customLoader(f, e, f_, el, more) {
-        this.i = this.succ = 0;
+        this.i = file.open[0];
+        this.succ = 0;
         this.fun = f;
         this.err = e;
         this.fin = f_;
         this.loadbar = el;
         this.more = more;
-        this.input =  file.input;
-        this.a = file.a;
+      }
+      function nextCLi() {
+        for (var i = 0, o = file.open; cL.i >= o[i];)
+          if (++i >= o.length)
+            return !1;
+        cL.i = o[i];
+        return !0;
       }
       function readFile(cL) {
         var reader = new FileReader();
         reader.cLoader = cL;
-        reader.readAsArrayBuffer(cL.a[cL.i]);
+        reader.readAsArrayBuffer(file.files[cL.i]);
         reader.addEventListener("loadend", function() {
           cL = this.cLoader;
-          var next = cL.fun(new Uint8Array(reader.result), cL.more);
+          if (this.error !== null) {
+            if (this.error.name === "NotReadableError")
+              CMD.warn("file " + file.files[cL.i].name + " changed");
+            else
+              CMD.err(this.error + "\nat fileOpener");
+            del.call(file.open, cL.i);
+            fileNames();
+          }
+          var next = cL.fun(new Uint8Array(this.result), cL.more);
           if (cL.loadbar !== null)
-            cL.loadbar.style.width = `${cL.i / cL.a.length * 100}%`;
+            cL.loadbar.style.width = cL.i / file.open.length * 100 + "%";
           cL.succ |= !next;
           if (next || cL.more)
-            if (++cL.i < cL.a.length)
+            if (nextCLi())
               return readFile(cL);
             else if (cL.succ)
               cL.fin();
@@ -98,7 +143,6 @@
               var el = cL.loadbar.parentElement;
               el.nextElementSibling.classList.remove('none');
               el.remove();
-              //cL.loadbar = null;
             }, 350);
           }
         }, false);
@@ -115,33 +159,77 @@
       }
       readFile(cL);
     }
-    file.input.addEventListener("change", (e) => {
-      if ((file.a = file.input.files).length > 1)
-        for (var i = 0, s = ""; i < file.a.length;)
-          s += (i ? ' "' : '"') + file.a[i++].name + '"';
-      else
-       var s = file.a.length ? file.a[0].name : '';
-      uploadBtn.nextElementSibling.textContent = s;
-    });
+    function onFile(e) {
+      var i = 0, a = this.files, el;
+      if (a.length) {
+        file.curr = this;
+        file.files = a;
+        for (file.open = []; i < a.length; i++)
+          file.open[i] = i;
+        fileNames();
+        el = file.input = document.createElement("input");
+        el.id = 2;
+        el.setAttribute("type", "file");
+        el.setAttribute("multiple", true);
+        el.classList.add("none");
+        this.parentNode.replaceChild(el, this);
+        el.onchange = onFile;
+      }
+    };
+    file.input.onchange = onFile;
+    
+    autoScroll = {toString: function   () {
+        var d = CMD.autoScroll = ++CMD.autoScroll % 3, s;
+        s = ["none", "critical", "all"][d]
+        CMD.log(s = "[object CMDautoScroll " + s + "]")
+        return s;
+      }
+    };
+    function aText(s) {
+      for (var b = !0, i = 0, s_ = ""; i < s.length;) {
+        for (; i < s.length && s[i] === '\n'; i++)
+          if (b = !b)
+            s_ += '\n';
+        for (b = !1; i < s.length && s[i] !== '\n'; i++)
+            s_ += s[i];
+      }
+      return s_;
+    }
     CMDline.onkeyup = function (k) {
-      var s = CMDline.innerText, s_, st = null;
+      var s = aText(CMDline.innerText), s_, st = null;
       if (s.indexOf('\n') < 0)
         return;
       CMDline.innerText = s = s.replaceAll('\n', '');
-      CMD.log((st = QS(s)).offsetHeight);
-      st.style.border = '1px white solid';
-      setTimeout(function() {
-        QS(CMDline.innerText).style.border = '';
-      }, 3000);
-      /*s.split(';').forEach(function (e) {
-        var a = e.split(':');
+      if (s.slice(0, 5) === 'from:') {
+        s = localStorage.getItem(s.slice(5));
+        if (s[0] === '{' && s[s.length - 1] === '}')
+          ship = JSON.parse(s);
+        else
+          ship = decodeCmprsShip(base64ToUint8array(s));
+        drawShip(canW.value, canH.value, cBC.value);
+        shipName.value = ship.name;
+      } else if (s.slice(0, 3) === 'to:') {
+        localStorage.setItem(s.slice(3), cBC.value.slice(-2) === '32' ? JSON.stringify(ship) : input.value);
+        } else if (s.slice(0,2) === 'el') {
+          CMD.log((st = QS(s.slice(3))).offsetHeight);
+          st.style.border = "1px white solid";
+          setTimeout(function() {
+            QS(CMDline.innerText).style.border = "";
+          }, 3000);
+        } else if (s === "autoScroll")
+          autoScroll.toString();
+      else
+        return CMD.log("expected `from:${key}` or `to:${key}` for local\
+        Storage manipulation, `autoScroll` to dis/an-able it");
+      /*s.split(";").forEach(function (e) {
+        var a = e.split(":");
         if (a.length === 2)
-          if (typeof st[s_ = a[0].trim()] === 'undefined')
-            CMD.err('nonexisting style: ' + s_)
+          if (typeof st[s_ = a[0].trim()] === U)
+            CMD.err("nonexisting style: " + s_)
           else
             st[s_] = a[1].trim();
         else if (a.length > 1)
-          CMD.err('styles syntax');
+          CMD.err("styles syntax");
       })*/
     }
     function init() {
@@ -164,7 +252,7 @@
           CMD.err(err);
         }
         if (more)
-          if (typeof (s = encodeCmprsShip()) === 'string')
+          if (typeof (s = encodeCmprsShip()) === "string")
             CMD.err(s);
           else
             myShips.push(ship.name, uint8arrayToBase64(s));
@@ -203,7 +291,7 @@
           shipName.value = ship.name += "-edited";
         toDownload = ["data:text/json;utf8," + JSON.stringify(ship)];
         var w = 450, h = 600, s = shipName.value, dat;
-        downl.nextElementSibling.textContent = downl.download = s + ".json";
+        downl.nextSibling.innerText = downl.download = s + ".json";
         downl.classList.remove("none");
         drawShip(w, h, cBC.value);
         dat = ctx.getImageData(0, 0, w, h).data;
@@ -224,11 +312,11 @@
         downl.href = toDownload.shift();
         if (toDownload.length) 
           return setTimeout(function () {
-            var e = downl.nextElementSibling;
-            e.textContent = downl.download = toDownload.shift();
+            var e = downl.nextSibling;
+            e.innerText = downl.download = toDownload.shift();
           }, 0);
         downl.classList.add("none");
-        downl.nextElementSibling.textContent = "no file to download";
+        downl.nextSibling.innerText = "no file to download";
       };
       var i = 0, el, btns = GE(), myShips = [
         "Klllsec",
@@ -262,18 +350,18 @@
       ];
       function addShip() {
         el = document.createElement("button");
-        el.textContent = myShips[i++];
+        el.innerText = myShips[i++];
         el.onclick = function () {
-          var s = this.nextElementSibling.textContent;
+          var s = this.nextSibling.innerText;
           s = decodeCmprsShip(base64ToUint8array(s));
-          if (typeof s === 'string')
+          if (typeof s === "string")
             return CMD.err(s);
           shipName.value = (ship = s).name;
           drawShip(canW.value, canH.value, cBC.value);
         };
         btns.appendChild(el);
         el = document.createElement("span");
-        el.textContent = myShips[i++];
+        el.innerText = myShips[i++];
         el.classList.add("none");
         btns.appendChild(el);
         if (i < myShips.length)
@@ -281,7 +369,7 @@
       }
       function setupShips() {
         for (el = GE(9).childNodes, i = el.length; --i > 0;)
-          el[i].remove();
+          el[i].parentNode.removeChild(el[i]);
         while (i < myShips.length)
           addShip();
       }
@@ -306,18 +394,17 @@
         }
         if (i >= (l = ubyteArr.length))
           return !0;
-        if (b)
-          i = 0;
+        b ? i = 0 : 0;
         for (var s; i < l;) {
-          for (s = ''; i < l && (c = ubyteArr[i++]) !== 44;)
+          for (s = ""; i < l && (c = ubyteArr[i++]) !== 44;)
             if (c > 31 && c < 127)
               s += String.fromCharCode(c);
             else
               return !0;
           if (i >= l)
             return !0;
-          ships.push(s.replaceAll('\\\\', '\\').replaceAll('\\c', ','));
-          for (s = ''; i < l && (c = ubyteArr[i++]) !== 44 && c !== 10;)
+          ships.push(s.replaceAll("\\\\", "\\").replaceAll("\\c", ","));
+          for (s = ""; i < l && (c = ubyteArr[i++]) !== 44 && c !== 10;)
             if (
               c > 64 ?
                 (c | 32) > 96 && (c | 32) < 123 :
@@ -339,24 +426,24 @@
       GE().onclick = function () {
         var s = shipName.value, v = encodeCmprsShip();
         i = myShips.length;
-        if (typeof v === 'string')
+        if (typeof v === "string")
           return CMD.err(v);
         myShips.push(s ? s : ship.name, uint8arrayToBase64(v));
         btns.appendChild(document.createElement("div"));
         setupShips();
       };
       GE().onclick = function () {
-        for (var i = 0, c, s = ''; i < myShips.length;) {
+        for (var i = 0, c, s = ""; i < myShips.length;) {
           c = myShips[i++];
           s += i & 1 ?
-            c.replaceAll('\\', '\\\\').replaceAll(',', '\\c') + ',':
-            c + '\n';
+            c.replaceAll("\\", "\\\\").replaceAll(",", "\\c") + ",":
+            c + "\n";
         }
         '"ship_name","base64_data"\n';
         toDownload = ['data:text/csv;utf8,"ship_name","base64_data"\n' + s];
         s = input.value;
-        s = s.length && s.length < 128 ? s.replaceAll(',', '') : 'DltrShips';
-        downl.nextElementSibling.textContent = downl.download = s + ".csv";
+        s = s.length && s.length < 128 ? s.replaceAll(",", "") : "DltrShips";
+        downl.nextSibling.textContent = downl.download = s + ".csv";
         downl.classList.remove("none");
       };
 
@@ -433,10 +520,11 @@
       }, NBID = {
         0: "block", 1: "wedge", 2: "wedge_1x2", 3: "pyramid", 4: "pyramid_1x2", 5: "inverse_pyramid", 6: "inverse_pyramid_1x2", 7: "hydrogen_tank_small", 8: "rcs_rocket_thruster_small", 9: "rocket_thruster_small", 10: "cockpit_fighter", 11: "cockpit_cruiser",
       };
-    function saveShip(name = "") {
-      if (typeof saveFile === "undefined" || typeof result === "undefined")
+    function saveShip(name) {
+      if (typeof name === U) name = "";
+      if (typeof saveFile === U || typeof result === U)
         return "saveFile function unavalible";
-      if (typeof ship.name === "undefined")
+      if (typeof ship.name === U)
         return "ship not loaded";
       if (name)
         ship.name = String(name);
@@ -445,9 +533,10 @@
       result = JSON.stringify(ship);
       saveFile(ship.name + ".json");
     }
-    function blocksRotatingTest(block = "pyramid_1x2") {
-      ship = {name: 'jsonFileEdtrTests', gameVersion: '0.1',
-        dateTime: 'screw your needs for time', blocks: Array(32)}
+    function blocksRotatingTest(block) {
+      if (typeof block === U) block = "pyramid_1x2";
+      ship = {name: "jsonFileEdtrTests", gameVersion: "0.1",
+        dateTime: "screw your needs for time", blocks: Array(32)}
       for (var i = 0, b = ship.blocks; i < 64; i++) {
         b[i] = {"internalName": block,
           "position": [(i&3)*2+(i>>2&8)-7,(i&3)*2+(i>>2&8)-7,((i&28)>>1)-7],
@@ -456,21 +545,21 @@
         };
       }
       if (/cockpit/.exec(block))
-        ship.blocks.forEach((b) => {
+        ship.blocks.forEach(function (b) {
           for (var n = 0; n < 3;)
             b.position[n++] *= 2;
         });
       b.length = 64;
     }
     function setDrShipEdtr() {
-      ship = decodeCmprsShip(base64ToUint8array('gAALU3RhcnRlclNoaXCAAQBnyR+wATjRE/MIg+/jGIhC4AC4AAgsIpEBBBAEDoFSLDKADKAEIFCSGTKAEQAAABClwmuwSAQAIUQIkAEAGAEAACghWoXSoJToICaAFiADAHBCYCgRSlIIIQC0ABkAgBMCWIQEEZlkABkAAAAnAAAAEQAACi9AC5ABAAAA4AQAQBVKgBYAQAYAAMAJAIA4VBApQAqQAQA4AQAgKwDIAACcAAAARAAAABBoATIAAAAAnAAA2AAQKAFaAAAZAAAAJwAA4lABtAAZAAAAJwAAJAUAGQAAACcAAAARAAAKDUALkAEAAADgBABAFU6AFgBABgAAwAkAgDiAAJACZAAATgAAyAsARgAAAECMCo1BIxEAhBAhQAYAYAQAAGCFWBVOg1Oig7gALoAMAMAJsTCcCCcphBAXwAWQAQA4IRawCAkiYWQQhUABUAAQaEQiAwBBoBAoxSIDyABKAAIlTviFogQ='));
+      ship = decodeCmprsShip(base64ToUint8array("gAALU3RhcnRlclNoaXCAAQBnyR+wATjRE/MIg+/jGIhC4AC4AAgsIpEBBBAEDoFSLDKADKAEIFCSGTKAEQAAABClwmuwSAQAIUQIkAEAGAEAACghWoXSoJToICaAFiADAHBCYCgRSlIIIQC0ABkAgBMCWIQEEZlkABkAAAAnAAAAEQAACi9AC5ABAAAA4AQAQBVKgBYAQAYAAMAJAIA4VBApQAqQAQA4AQAgKwDIAACcAAAARAAAABBoATIAAAAAnAAA2AAQKAFaAAAZAAAAJwAA4lABtAAZAAAAJwAAJAUAGQAAACcAAAARAAAKDUALkAEAAADgBABAFU6AFgBABgAAwAkAgDiAAJACZAAATgAAyAsARgAAAECMCo1BIxEAhBAhQAYAYAQAAGCFWBVOg1Oig7gALoAMAMAJsTCcCCcphBAXwAWQAQA4IRawCAkiYWQQhUABUAAQaEQiAwBBoBAoxSIDyABKAAIlTviFogQ="));
       drawShip(480, 560, "#111133");
     }
     function gShip(Uint8ArrOrInput) {
       if (Uint8ArrOrInput) {
         if (typeof uint8array !== "object")
           return "uint8array undefined";
-        if (typeof uint8array.BYTES_PER_ELEMENT !== "undefined")
+        if (typeof uint8array.BYTES_PER_ELEMENT !== U)
           for (var i = uint8array.length, s = ""; i-- > 0;)
             s = String.fromCharCode(uint8array[i]) + s;
         else
@@ -681,8 +770,9 @@
       }
       // ID bit length (3 bits) + 4 (IDLEN)
       wBitsMSBfFast(3, 0);
-      min = [...b[--l].position];
-      max = [...min];
+      arr = b[--l].position;
+      min = [arr[0], arr[1], arr[2]];
+      max = [arr[0], arr[1], arr[2]];
       while (l-- > 0) {
         arr = b[l].position;
         for (n = 0; n < 3; n++)
@@ -863,7 +953,8 @@
         n = n * 256 + buffer[i++];
       return n;
     }
-    function gBitsMSBfFast(l = 2) {
+    function gBitsMSBfFast(l) {
+      if (typeof l === U) l = 2;
       var mj = j, b_int = !1;
       if (l + j > 8) {
         b_int = buffer[i++] & 255 << j;
@@ -935,7 +1026,7 @@
         arr = [], prev = [], b = [], min = [],  max = [], size = [], sizeB = [],
         rot = [], properties = [], obj, ship = {}, p_i;
       i = j = 0;
-      if (cmprsShip !== "undefined")
+      if (cmprsShip !== U)
         buffer = cmprsShip;
       // data block: compression version (and check)
       arr = gVersion();
@@ -972,7 +1063,8 @@
         min[n] -= (1 << l - 1) - 1;
         max[n] -= (1 << l - 1) - 1;
       }
-      function fixedBlock(b = !0) {
+      function fixedBlock(b) {
+        if (typeof b === U) b = !0;
         var obj = {}, dir;
         // ID
         obj.internalName = NBID[id = gBitsMSBfFast(IDLEN)];
@@ -1124,7 +1216,8 @@
     function rotationIndex(arr) { /* returns index of rotation */
       arr = rotateBlock(arr);
       arr = arr[2] | arr[1] << 2 | arr[0] << 3;
-      return [...gBlockRotation(arr), arr];
+      var r = gBlockRotation(arr);
+      return [r[0], r[1], r[2], arr];
     }
   </script>
 </body>
