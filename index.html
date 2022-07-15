@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- from random version: 1.0.7 to v.1.0.9 -->
+<!-- v.1.0.10 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compressor</title>
   <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/751449529789841428/987264320318607390/Dr.png">
-  <style>body{margin: 0px;background-color: #000;}.none{display: none !important;}.mrgn10{margin: 10px;}canvas{image-rendering: -o-pixelated;image-rendering: pixelated;}.RL-divide{display: flex;flex-direction: row;width: fit-content;align-items: stretch;padding: 10px;}.CMD-chat{width: 330px;margin-top: 4px;position: relative;display: flex;display: -webkit-box;display: -ms-flexbox;-webkit-box-orient: vertical;-ms-flex-direction: column;flex-direction: column;color: #fff;font-family: monospace;font-size: 16px;}.CMD-log-outer{width: 330px;min-height: 0;position: relative;-ms-flex: 1 1 auto;flex: 1 1 auto;-webkit-box-flex: 1;overflow-y: auto;overflow-x: hidden;background-color: #323232;}.CMD-log-view{min-width: 0;min-height: 0;position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow: hidden scroll;}.CMD-log-tobottom{min-height: 100%;position: relative;display: flex;flex-direction: column;justify-content: flex-end;align-items: stretch;-ms-flex-direction: column;-ms-flex-pack: end;-ms-flex-align: stretch;-webkit-box-align: stretch;-webkit-box-direction: normal;-webkit-box-orient: vertical;-webkit-box-pack: end;}.CMD-log-fit{min-height: 0;}.CMD-log{height: fit-content;width: 313px;padding: 5px 0;overflow-wrap: break-word;word-break: break-all;}.CMD-log > div{padding: 4px 10px;}.CMD-line-bar{width: 320px;padding: 10px 0 10px 10px;background-color: #242424;}.CMD-line{width: 310px;max-height: 150px;padding-right: 10px;outline: none;}.CMDscrl{overflow-y: auto;overflow-x: hidden;}.CMDscrl::-webkit-scrollbar{width:17px;background-color: #0000;}.CMDscrl::-webkit-scrollbar-thumb{width:17px;background-color: #111;}.red{background-color: #510;color: #faa;}.yel{background-color: #440;color: #ffa;}.grn{background-color: #150;;color: #afa}._13{transform: translateY(3.85px);}.CMD-log input{width: calc(100% - 10px);height: 16px;border: none;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, "Courier New", sans-serif;}.CMD-log .inp a{display: inline-block;height: 21px;padding: 7px 5px 4.5px 5px;}.inp span{line-height: 32px;display: content;}.CMD-log > div > div, .CMD-log input, .CMD-log a{padding: 5px;}.CMD-log button, .CMD-log a{height: 32px;border: none;background-color: #505050;color: #fff;font-size: 16px;font-family: monospace, "Curier New", sans-serif;}.CMD-log button:hover, .CMD-log button:focus, .CMD-log a:hover, .CMD-log a:focus{background-color: #5f5f5f;}.CMD-log button:active, .CMD-log a:active{background-color: #454545;user-select: none;}.CMD-log .inp{width: calc(100% - 10px);min-height: 0px;max-height: 999999px;padding: 0 5px;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, sans-serif;}.inps{display: flex;overflow-wrap: normal;word-break: keep-all;}.CMD-log .inps div{padding: 0;}.CMD-log .inps div div:first-child{padding: 0 0 5px 5px;}.inps > div:not(:last-child) {padding-right: 10px;}.narrow {width: 70px;}input[type="color"]{height: 29px;width: 111%;padding: 0 3px;}.wide{width: 50%;}.inp button, .inp a{position: relative;left: -5px;top: 0;}.loadbox{width: 300px;height: 32px;position: fixed;top: 50%;right: 50%;transform: translate(50%, 50%);background-color: #111111;}div.loading{width: fit-content;height: fit-content;padding: 0;position: relative;background-color: #505050;}div.loading div:nth-child(1){height: 100%;padding: 0;position: absolute;top: 0;left: 0;background-color: #474;transition: 0.15s;}div.loading div:nth-child(2){width: fit-content;padding: 1.5px 1px;height: 19px;z-index: 1;position: relative;background-color: #0000;}</style>
+  <style>body{margin: 0px;background-color: #000;}.none{display: none !important;}.mrgn10{margin: 10px;}canvas{image-rendering: -o-pixelated;image-rendering: pixelated;}.RL-divide{display: flex;flex-direction: row;width: fit-content;align-items: stretch;padding: 10px;}.CMD-chat{width: 330px;margin-top: 4px;position: relative;display: flex;display: -webkit-box;display: -ms-flexbox;-webkit-box-orient: vertical;-ms-flex-direction: column;flex-direction: column;color: #fff;font-family: monospace;font-size: 16px;overflow-wrap: break-word;word-break: break-all;}.CMD-log-outer{width: 330px;min-height: 0;position: relative;-ms-flex: 1 1 auto;flex: 1 1 auto;-webkit-box-flex: 1;overflow-y: auto;overflow-x: hidden;background-color: #323232;}.CMD-log-view{min-width: 0;min-height: 0;position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow: hidden scroll;}.CMD-log-tobottom{min-height: 100%;position: relative;display: flex;flex-direction: column;justify-content: flex-end;align-items: stretch;-ms-flex-direction: column;-ms-flex-pack: end;-ms-flex-align: stretch;-webkit-box-align: stretch;-webkit-box-direction: normal;-webkit-box-orient: vertical;-webkit-box-pack: end;}.CMD-log-fit{min-height: 0;}.CMD-log{height: fit-content;width: 313px;padding: 5px 0;}.CMD-log > div{padding: 4px 10px;}.CMD-line-bar{width: 320px;padding: 10px 0 10px 10px;background-color: #242424;}.CMD-line{width: 310px;max-height: 150px;padding-right: 10px;outline: none;}.CMDscrl{overflow-y: auto;overflow-x: hidden;}.CMDscrl::-webkit-scrollbar{width:17px;background-color: #0000;}.CMDscrl::-webkit-scrollbar-thumb{width:17px;background-color: #111;}.red{background-color: #510;color: #faa;}.yel, .CMD-log button.yel{background-color: #440;color: #ffa;}.grn{background-color: #150;;color: #afa}._13{transform: translateY(3.85px);}.CMD-log input{width: calc(100% - 10px);height: 16px;border: none;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, "Courier New", sans-serif;}.CMD-log .inp a{display: inline-block;height: 21px;padding: 7px 5px 4.5px 5px;}.inp span{line-height: 32px;display: content;}.CMD-log > div > div, .CMD-log input, .CMD-log a{padding: 5px;min-height: 0;max-height: 99999px}.CMD-log button, .CMD-log a{height: 32px;border: none;background-color: #505050;color: #fff;font-size: 16px;font-family: monospace, "Curier New", sans-serif;white-space: nowrap;}.CMD-log button:hover, .CMD-log button:focus, .CMD-log a:hover, .CMD-log a:focus{background-color: #5f5f5f;}.CMD-log button:active, .CMD-log a:active{background-color: #454545;user-select: none;}.CMD-log .inp{width: calc(100% - 10px);min-height: 0px;max-height: 999999px;padding: 0 5px;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, sans-serif;}.inps{display: flex;overflow-wrap: normal;word-break: keep-all;}.CMD-log .inps div{padding: 0;}.CMD-log .inps div div:first-child{padding: 0 0 5px 5px;}.inps > div:not(:last-child) {padding-right: 10px;}.narrow {width: 70px;}input[type="color"]{height: 29px;width: 111%;padding: 0 3px;}.wide{width: 50%;}.inp button, .inp a{position: relative;left: -5px;top: 0;}.loadbox{width: 300px;height: 32px;position: fixed;top: 50%;right: 50%;transform: translate(50%, 50%);background-color: #111111;}div.loading{width: fit-content;height: fit-content;padding: 0;position: relative;background-color: #505050;}div.loading div:nth-child(1){height: 100%;padding: 0;position: absolute;top: 0;left: 0;background-color: #474;transition: 0.15s;}div.loading div:nth-child(2){width: fit-content;padding: 1.5px 1px 1.5px;height: 19px;z-index: 1;position: relative;background-color: #0000;text-align: start;align-self: start;}.CMD-line span{font-size: 32px;}.CMD-chat.corr0 .inp button{color: auto;}body .CMD-chat.corr0, .CMD-chat.corr0 button, .CMD-chat.corr0 a, .CMD-chat.corr0 input, .CMD-chat.corr0 span{font-size: 12px;}.CMD-chat.corr0 .inp span{line-height: 24px;}.CMD-chat.corr0 .inp a{height: 20px;padding-bottom: 5px;}.CMD-chat.corr1 div.loading div:nth-child(2){padding: 2px 1px 1px;}</style>
 </head>
 <body onload="init();">
-  <div class="RL-divide"><div id="11"><canvas id="0" class="_13" width="480" height="560"></canvas></div><div class="CMD-chat"><div class="CMD-log-outer"><div class="CMD-log-view CMDscrl"><div class="CMD-log-tobottom"><div id="12" class="CMD-log"><div><div title="mostly for base64">input:</div><input id="1" title="typical input element to not flood console with long strings"></div><div><div title="for opening Deltarealm json ships">file input:</div><div class="inp"><button id="3">Upload</button><span></span></div></div><div><div title="some of what the code can be used for">ship functions:</div><button id="4" title="sets shipt to one from base64">Load ship from Base64</button><div></div><button id="5" title="sets ship to one from file">Load ship from JSON file</button><div></div><button id="6" title="sets input to base64 of actual ship (variable ship can be accesed in console)">base64 of ship</button><div></div><button id="7" title="sets file output to actual ship json than drawed ship png">JSON file of ship</button></div><div><div title="name of actual ship">ship.name:</div><input id="15" type="text" title="encodes ship with this ship.name (just edits name)"></div><div class="inps" title="inputs for my drawShip function"><div class="narrow"><div>width:</div><input id="16" type="number"></div><div class="narrow"><div>height:</div><input id="17" type="number"></div><div class="wide"><div>backg.-color:</div><input id="18" type="text"></div></div><div><div title="after clicking JSON file of ship file waits here to be downloaded throught download link">file output:</div><div class="inp"><a id="8" class="none" title="doubleclick to download 2 instantly (xD)">Download</a><span>no file to download</span></div></div><div id="9"><div title="417kB of ships within 50kB of html with its coding and decoding">my ships:</div></div><div><div title="some of what the code can be used for">for ships:</div><button id="19" title="sets 'my ships' to ships from multiple JSON files">Load ships from files</button><div></div><button id="20" title="sets 'my ships' ships from first csv file">Load ships from csv file</button><div></div><button id="21" title="adds loaded ship to 'my ships'">add ship to ships</button><div></div><button id="22" title="sets file output to csv file of all of 'my ships'">csv file of all ships</button></div></div></div></div></div><div class="CMD-line-bar"><div id="13" contenteditable="true" class="CMD-line CMDscrl"><span></span><span style="color: #999; font-size: 16px;">not working command line</span><span></span></div><div class="CMD-line-btns none">comming spoon</div></div></div><input id="2" class="none" type="file" multiple></div>
+  <div class="RL-divide"><div id="11"><canvas id="0" class="_13" width="480" height="560"></canvas></div><div id="45" class="CMD-chat"><div class="CMD-log-outer"><div class="CMD-log-view CMDscrl"><div class="CMD-log-tobottom"><div id="12" class="CMD-log"><div><div title="mostly for base64">input:</div><input id="1" title="typical input element to not flood console with long strings"></div><div><div title="for opening Deltarealm json ships">file input:</div><div class="inp"><button id="3">Upload</button><span></span></div></div><div><div title="some of what the code can be used for">ship functions:</div><button id="4" title="sets shipt to one from base64">Load ship from Base64</button><div></div><button id="5" title="sets ship to one from file">Load ship from JSON file</button><div></div><button id="6" title="sets input to base64 of actual ship (variable ship can be accesed in console)">base64 of ship</button><div></div><button id="7" title="sets file output to actual ship json than drawed ship png">JSON file of ship</button></div><div><div title="name of actual ship">ship.name:</div><input id="15" type="text" title="encodes ship with this ship.name (just edits name)"></div><div class="inps" title="inputs for my drawShip function"><div class="narrow"><div>width:</div><input id="16" type="number"></div><div class="narrow"><div>height:</div><input id="17" type="number"></div><div class="wide"><div>backg.-color:</div><input id="18" type="text"></div></div><div><div title="after clicking JSON file of ship file waits here to be downloaded throught download link">file output:</div><div class="inp"><a id="8" class="none" title="doubleclick to download 2 instantly (xD)">Download</a><span>no file to download</span></div></div><div id="9"><div title="417kB of ships within 55kB of html with its coding and decoding">my ships:</div></div><div><div title="some of what the code can be used for">for ships:</div><button id="19" title="sets 'my ships' to ships from multiple JSON files">Load ships from files</button><div></div><button id="20" title="sets 'my ships' ships from first csv file">Load ships from csv file</button><div></div><button id="21" title="adds loaded ship to 'my ships'">add ship to ships</button><div></div><button id="22" title="sets file output to csv file of all of 'my ships'">csv file of all ships</button></div></div></div></div></div><div class="CMD-line-bar"><div id="13" contenteditable="true" class="CMD-line CMDscrl"><span></span><span style="color: #999; font-size: 16px;">not working command line</span><span></span></div><div class="CMD-line-btns none">comming spoon</div></div></div><input id="2" class="none" type="file" multiple></div>
   <script>
     "use strict";
     function GE(v) {var t=typeof v;return document.getElementById(t==="number"&&v>=v?(_ge=v+1)-1:t==="undefined"?v=_ge++:v);}
@@ -22,10 +22,15 @@
     function forEach(f, t) {
       for (var i = 0, l = this.length; i < l; i++)
         if (Object.hasOwnProperty.call(this, i))
-          f.call(t, this[i], i, this);
+          f(this[i], i, this);
     }
     if (typeof [].forEach === U)
       Array.prototype.forEach = forEach;
+    function replaceAll(s, s_) {
+      return this.split(s).join(s_);
+    }
+    if (typeof "".replaceAll === U)
+      String.prototype.replaceAll = replaceAll;
     function hexColor(arr) {
       if(typeof arr === U) arr = [0,0,0];
       for (var i = 0, clr = "#"; i < arr.length; i++)
@@ -72,13 +77,13 @@
     }
   </script><script>
     "use strict";
-    var file = {input: file, a: []};
+    var file = {input: file, curr: null, files: [], open: []};
     function fileNames() {
       var i = 0, p, s = "", a = file.files, o = file.open;
       p = o.length > 1 ? "\"" : "";
       while (i < o.length)
         s += (i ? " " + p : p) + a[o[i++]].name + p;
-      uploadBtn.nextSibling.textContent = s;
+      uploadBtn.nextSibling.innerText = s;
     }
     function fileOpener(f, e, f_ = function () {}, el = null, more = !1) {
     // f = function with Uint8Array input argument executed on file load,
@@ -140,22 +145,28 @@
             st.visibility = 'hidden';
             st.transition = '0.3s';
             setTimeout(function () {
-              var el = cL.loadbar.parentElement;
-              el.nextElementSibling.classList.remove('none');
-              el.remove();
+              var el = cL.loadbar.parentNode;
+              el.nextSibling.classList.remove('none');
+              el.parentNode.removeChild(el);
             }, 350);
           }
         }, false);
       }
       var cL = new customLoader(f, e, f_, el, more);
       if (cL.loadbar !== null) {
-        var bar = cL.loadbar;
-        el = document.createElement('div');
-        el.classList.add('loading');
-        el.innerHTML = '<div></div><div>' + bar.textContent + '</div>';
-        bar.before(el);
-        bar.classList.add('none');
-        cL.loadbar = el.childNodes[0];
+        el = cL.loadbar;
+        var w = el.offsetWidth, bar = document.createElement("div");
+        bar.classList.add("loading");
+        bar.innerHTML = "<div></div><div>" + el.innerText + "</div>";
+        el.parentNode.insertBefore(bar, el);
+        el.classList.add("none");
+        cL.loadbar = bar.childNodes[0];
+        if (bar.offsetWidth !== w) {
+          // should have been an formula using bar.offsetWidth, w
+          w = "3px";
+          bar.style["padding-left"] = bar.style["padding-right"] = w;
+          GE(45).classList.remove("corr1");
+        }
       }
       readFile(cL);
     }
@@ -202,6 +213,8 @@
       CMDline.innerText = s = s.replaceAll('\n', '');
       if (s.slice(0, 5) === 'from:') {
         s = localStorage.getItem(s.slice(5));
+        if (s === null)
+          return CMD.log("nonexisting slot");
         if (s[0] === '{' && s[s.length - 1] === '}')
           ship = JSON.parse(s);
         else
@@ -234,7 +247,7 @@
     }
     function init() {
       // UI buttons
-      var delay = 0;
+      var delay = 0, tmpShips;
       uploadBtn.onclick = function () {
         if (delay < Date.now()) {
           file.input.click();
@@ -255,7 +268,7 @@
           if (typeof (s = encodeCmprsShip()) === "string")
             CMD.err(s);
           else
-            myShips.push(ship.name, uint8arrayToBase64(s));
+            tmpShips.push(ship.name, uint8arrayToBase64(s));
       }
       GE(4).onclick = function () {
         if (!input.value.length)
@@ -291,7 +304,8 @@
           shipName.value = ship.name += "-edited";
         toDownload = ["data:text/json;utf8," + JSON.stringify(ship)];
         var w = 450, h = 600, s = shipName.value, dat;
-        downl.nextSibling.innerText = downl.download = s + ".json";
+        downl.download = s += ".json";
+        downl.nextSibling.innerText = s + " +1";
         downl.classList.remove("none");
         drawShip(w, h, cBC.value);
         dat = ctx.getImageData(0, 0, w, h).data;
@@ -312,8 +326,10 @@
         downl.href = toDownload.shift();
         if (toDownload.length) 
           return setTimeout(function () {
-            var e = downl.nextSibling;
+            var e = downl.nextSibling, n;
             e.innerText = downl.download = toDownload.shift();
+            if (n = toDownload.length >> 1)
+              e.innerText += " +" + n;
           }, 0);
         downl.classList.add("none");
         downl.nextSibling.innerText = "no file to download";
@@ -375,9 +391,12 @@
       }
       setupShips();
       GE(19).onclick = function () {
-        myShips = [];
+        tmpShips = [];
         i = 0;
-        fileOpener(shipJSON, "No ship JSON files chosen", setupShips, this, !0);
+        fileOpener(shipJSON, "No ship JSON files chosen", function () {
+          myShips = tmpShips;
+          setupShips();
+        }, this, !0);
       };
       function loadShipsCSV(ubyteArr) { /* compressed weirdocode */
         var b = 2, i = 0, j = 0, l = ubyteArr.length, c, req, ships = [];
@@ -439,11 +458,11 @@
             c.replaceAll("\\", "\\\\").replaceAll(",", "\\c") + ",":
             c + "\n";
         }
-        '"ship_name","base64_data"\n';
-        toDownload = ['data:text/csv;utf8,"ship_name","base64_data"\n' + s];
+        s = '"ship_name","base64_data"\n' + s;
+        toDownload = [URL.createObjectURL(new Blob([s], {type: "text/csv"}))];
         s = input.value;
         s = s.length && s.length < 128 ? s.replaceAll(",", "") : "DltrShips";
-        downl.nextSibling.textContent = downl.download = s + ".csv";
+        downl.nextSibling.innerText = downl.download = s + ".csv";
         downl.classList.remove("none");
       };
 
@@ -454,6 +473,11 @@
       cBC.value = "#111133";
       cBC.style.color = shipName.style.color = "#c97";
       canH.style.color = canW.style.color = "#bda";
+      // repairing broken styles in some android HTML render engines
+      if (uploadBtn.parentNode.offsetHeight === 42) {
+        // greatly reliable way to detect different rendering
+        GE(45).classList.add("corr0", "corr1");
+      }
     }
     function base64ToUint8array(base64) {
       var uint8array = [], buffer, i = 0, p = 0, c;
