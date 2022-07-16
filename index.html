@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v.1.0.10 -->
+<!-- v.1.0.10.1 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -223,15 +223,47 @@
         shipName.value = ship.name;
       } else if (s.slice(0, 3) === 'to:') {
         localStorage.setItem(s.slice(3), cBC.value.slice(-2) === '32' ? JSON.stringify(ship) : input.value);
-        } else if (s.slice(0,2) === 'el') {
-          CMD.log((st = QS(s.slice(3))).offsetHeight);
-          st.style.border = "1px white solid";
-          setTimeout(function() {
-            QS(CMDline.innerText).style.border = "";
-          }, 3000);
-        } else if (s === "autoScroll")
-          autoScroll.toString();
-      else
+      } else if (s.slice(0,2) === 'el') {
+        CMD.log((st = QS(s.slice(3))).offsetHeight);
+        st.style.border = "1px white solid";
+        setTimeout(function() {
+          QS(CMDline.innerText).style.border = "";
+        }, 3000);
+      } else if (s === "autoScroll")
+        autoScroll.toString();
+      else if (s === "HTMLdoc" || s === "download") {
+// test
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function () {
+  function ASCIIify(s) {
+    if (typeof s !== "string")
+      throw new Error("s is not type of string");
+    var i, j, c, s_ = "", hex = {};
+    for (i = 16; i-- > 0;)
+      hex[i] = i > 9 ? "abcdef"[i - 10] : i;
+    for (i = 16; i-- > 10;)
+      hex[hex[i]] = i;
+    for (i = s.length; i-- > 0;) {
+      c = s.charCodeAt(i);
+      if (c > 7 && c < 14 && c !== 11)
+        s_ = '\\' + "btnvfr"[c - 8] + s_;
+      else if (c === 34)
+        s_ = "\\\"" + s_;
+      else if (c > 31 && c < 127)
+        s_ = s[i] + s_;
+      else {
+        for (j = 0; j++ < 4; c >>= 4)
+          s_ = hex[c & 15] + s_;
+        s_ = "\\u" + s_;
+      }
+    }
+    return s_;
+  }
+  CMD.log(this.readyState, ["UNSENT", "OPENED", "HEADERS_RECEIVED", "LOADING", "DONE"][this.readyState], ASCIIify(this.responseText));
+};
+xhr.open("GET", window.location);
+xhr.send();
+      } else
         return CMD.log("expected `from:${key}` or `to:${key}` for local\
         Storage manipulation, `autoScroll` to dis/an-able it");
       /*s.split(";").forEach(function (e) {
