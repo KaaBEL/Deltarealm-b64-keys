@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v.1.0.10.1 -->
+<!-- v.1.0.10.9 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compressor</title>
   <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/751449529789841428/987264320318607390/Dr.png">
-  <style>body{margin: 0px;background-color: #000;}.none{display: none !important;}.mrgn10{margin: 10px;}canvas{image-rendering: -o-pixelated;image-rendering: pixelated;}.RL-divide{display: flex;flex-direction: row;width: fit-content;align-items: stretch;padding: 10px;}.CMD-chat{width: 330px;margin-top: 4px;position: relative;display: flex;display: -webkit-box;display: -ms-flexbox;-webkit-box-orient: vertical;-ms-flex-direction: column;flex-direction: column;color: #fff;font-family: monospace;font-size: 16px;overflow-wrap: break-word;word-break: break-all;}.CMD-log-outer{width: 330px;min-height: 0;position: relative;-ms-flex: 1 1 auto;flex: 1 1 auto;-webkit-box-flex: 1;overflow-y: auto;overflow-x: hidden;background-color: #323232;}.CMD-log-view{min-width: 0;min-height: 0;position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow: hidden scroll;}.CMD-log-tobottom{min-height: 100%;position: relative;display: flex;flex-direction: column;justify-content: flex-end;align-items: stretch;-ms-flex-direction: column;-ms-flex-pack: end;-ms-flex-align: stretch;-webkit-box-align: stretch;-webkit-box-direction: normal;-webkit-box-orient: vertical;-webkit-box-pack: end;}.CMD-log-fit{min-height: 0;}.CMD-log{height: fit-content;width: 313px;padding: 5px 0;}.CMD-log > div{padding: 4px 10px;}.CMD-line-bar{width: 320px;padding: 10px 0 10px 10px;background-color: #242424;}.CMD-line{width: 310px;max-height: 150px;padding-right: 10px;outline: none;}.CMDscrl{overflow-y: auto;overflow-x: hidden;}.CMDscrl::-webkit-scrollbar{width:17px;background-color: #0000;}.CMDscrl::-webkit-scrollbar-thumb{width:17px;background-color: #111;}.red{background-color: #510;color: #faa;}.yel, .CMD-log button.yel{background-color: #440;color: #ffa;}.grn{background-color: #150;;color: #afa}._13{transform: translateY(3.85px);}.CMD-log input{width: calc(100% - 10px);height: 16px;border: none;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, "Courier New", sans-serif;}.CMD-log .inp a{display: inline-block;height: 21px;padding: 7px 5px 4.5px 5px;}.inp span{line-height: 32px;display: content;}.CMD-log > div > div, .CMD-log input, .CMD-log a{padding: 5px;min-height: 0;max-height: 99999px}.CMD-log button, .CMD-log a{height: 32px;border: none;background-color: #505050;color: #fff;font-size: 16px;font-family: monospace, "Curier New", sans-serif;white-space: nowrap;}.CMD-log button:hover, .CMD-log button:focus, .CMD-log a:hover, .CMD-log a:focus{background-color: #5f5f5f;}.CMD-log button:active, .CMD-log a:active{background-color: #454545;user-select: none;}.CMD-log .inp{width: calc(100% - 10px);min-height: 0px;max-height: 999999px;padding: 0 5px;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, sans-serif;}.inps{display: flex;overflow-wrap: normal;word-break: keep-all;}.CMD-log .inps div{padding: 0;}.CMD-log .inps div div:first-child{padding: 0 0 5px 5px;}.inps > div:not(:last-child) {padding-right: 10px;}.narrow {width: 70px;}input[type="color"]{height: 29px;width: 111%;padding: 0 3px;}.wide{width: 50%;}.inp button, .inp a{position: relative;left: -5px;top: 0;}.loadbox{width: 300px;height: 32px;position: fixed;top: 50%;right: 50%;transform: translate(50%, 50%);background-color: #111111;}div.loading{width: fit-content;height: fit-content;padding: 0;position: relative;background-color: #505050;}div.loading div:nth-child(1){height: 100%;padding: 0;position: absolute;top: 0;left: 0;background-color: #474;transition: 0.15s;}div.loading div:nth-child(2){width: fit-content;padding: 1.5px 1px 1.5px;height: 19px;z-index: 1;position: relative;background-color: #0000;text-align: start;align-self: start;}.CMD-line span{font-size: 32px;}.CMD-chat.corr0 .inp button{color: auto;}body .CMD-chat.corr0, .CMD-chat.corr0 button, .CMD-chat.corr0 a, .CMD-chat.corr0 input, .CMD-chat.corr0 span{font-size: 12px;}.CMD-chat.corr0 .inp span{line-height: 24px;}.CMD-chat.corr0 .inp a{height: 20px;padding-bottom: 5px;}.CMD-chat.corr1 div.loading div:nth-child(2){padding: 2px 1px 1px;}</style>
+  <style type="text/css" media="all">body{margin: 0px;background-color: #000;}.none{display: none !important;}.mrgn10{margin: 10px;}.pad0{padding: 0 !important;border: 1px solid white;}canvas{image-rendering: -o-pixelated;image-rendering: pixelated;}.RL-divide{display: flex;flex-direction: row;width: fit-content;align-items: stretch;padding: 10px;}.CMD-chat{width: 330px;margin-top: 4px;position: relative;display: flex;display: -webkit-box;display: -ms-flexbox;-webkit-box-orient: vertical;-ms-flex-direction: column;flex-direction: column;color: #fff;font-family: monospace, sans-serif, Courier, Consolas;font-size: 16px;overflow-wrap: break-word;word-break: break-all;}.CMD-log-outer{width: 330px;min-height: 0;position: relative;-ms-flex: 1 1 auto;flex: 1 1 auto;-webkit-box-flex: 1;overflow-y: auto;overflow-x: hidden;background-color: #323232;}.CMD-log-view{min-width: 0;min-height: 0;position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow: hidden scroll;}.CMD-log-tobottom{min-height: 100%;position: relative;display: flex;flex-direction: column;justify-content: flex-end;align-items: stretch;-ms-flex-direction: column;-ms-flex-pack: end;-ms-flex-align: stretch;-webkit-box-align: stretch;-webkit-box-direction: normal;-webkit-box-orient: vertical;-webkit-box-pack: end;}.CMD-log-fit{min-height: 0;}.CMD-log{height: fit-content;width: 313px;padding: 5px 0;}.CMD-log > div{padding: 4px 10px;}.CMD-line-bar{width: 320px;padding: 10px 0 10px 10px;background-color: #242424;}.CMD-line{width: 310px;max-height: 150px;padding-right: 10px;outline: none;}.CMDscrl{overflow-y: auto;overflow-x: hidden;}.CMDscrl::-webkit-scrollbar{width:17px;background-color: #0000;}.CMDscrl::-webkit-scrollbar-thumb{width:17px;background-color: #111;}.red{background-color: #510;color: #faa;}.yel, .CMD-log button.yel{background-color: #440;color: #ffa;}.grn{background-color: #150;;color: #afa}._13{transform: translateY(3.85px);}.CMD-log input{width: calc(100% - 10px);height: 16px;border: none;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, sans-serif, Courier, Consolas;}.CMD-log .inp a{display: inline-block;height: 21px;padding: 7px 5px 4.5px 5px;}.inp span{line-height: 32px;display: content;}.CMD-log > div > div, .CMD-log input, .CMD-log a{padding: 5px;min-height: 0;max-height: 99999px}.CMD-log button, .CMD-log a{height: 32px;border: none;background-color: #505050;color: #fff;font-size: 16px;font-family: monospace, sans-serif, Courier, Consolas;white-space: nowrap;}.CMD-log button:hover, .CMD-log button:focus, .CMD-log a:hover, .CMD-log a:focus{background-color: #5f5f5f;}.CMD-log button:active, .CMD-log a:active{background-color: #454545;user-select: none;}.CMD-log .inp{width: calc(100% - 10px);min-height: 0px;max-height: 999999px;padding: 0 5px;background-color: #242424;color: #bbb;font-size: 16px;font-family: monospace, sans-serif, Courier, Consolas;}.inps{display: flex;overflow-wrap: normal;word-break: keep-all;}.CMD-log .inps div{padding: 0;}.CMD-log .inps div div:first-child{padding: 0 0 5px 5px;}.inps > div:not(:last-child) {padding-right: 10px;}.narrow {width: 70px;}input[type="color"]{height: 29px;width: 111%;padding: 0 3px;}.wide{width: 50%;}.inp button, .inp a{position: relative;left: -5px;top: 0;}.loadbox{width: 300px;height: 32px;position: fixed;top: 50%;right: 50%;transform: translate(50%, 50%);background-color: #111111;}div.loading{width: fit-content;height: fit-content;padding: 0;position: relative;background-color: #505050;}div.loading div:nth-child(1){height: 100%;padding: 0;position: absolute;top: 0;left: 0;background-color: #474;transition: 0.15s;}div.loading div:nth-child(2){width: fit-content;padding: 1.5px 1px 1.5px;height: 19px;z-index: 1;position: relative;background-color: #0000;text-align: start;align-self: start;}.CMD-line span{font-size: 32px;}.CMD-chat.corr0 .inp button{color: auto;}body .CMD-chat.corr0, .CMD-chat.corr0 button, .CMD-chat.corr0 a, .CMD-chat.corr0 input, .CMD-chat.corr0 span{font-size: 12px;}.CMD-chat.corr0 .inp span{line-height: 24px;}.CMD-chat.corr0 .inp a{height: 20px;padding-bottom: 5px;}.CMD-chat.corr1 div.loading div:nth-child(2){padding: 2px 1px 1px;}</style>
 </head>
 <body onload="init();">
-  <div class="RL-divide"><div id="11"><canvas id="0" class="_13" width="480" height="560"></canvas></div><div id="45" class="CMD-chat"><div class="CMD-log-outer"><div class="CMD-log-view CMDscrl"><div class="CMD-log-tobottom"><div id="12" class="CMD-log"><div><div title="mostly for base64">input:</div><input id="1" title="typical input element to not flood console with long strings"></div><div><div title="for opening Deltarealm json ships">file input:</div><div class="inp"><button id="3">Upload</button><span></span></div></div><div><div title="some of what the code can be used for">ship functions:</div><button id="4" title="sets shipt to one from base64">Load ship from Base64</button><div></div><button id="5" title="sets ship to one from file">Load ship from JSON file</button><div></div><button id="6" title="sets input to base64 of actual ship (variable ship can be accesed in console)">base64 of ship</button><div></div><button id="7" title="sets file output to actual ship json than drawed ship png">JSON file of ship</button></div><div><div title="name of actual ship">ship.name:</div><input id="15" type="text" title="encodes ship with this ship.name (just edits name)"></div><div class="inps" title="inputs for my drawShip function"><div class="narrow"><div>width:</div><input id="16" type="number"></div><div class="narrow"><div>height:</div><input id="17" type="number"></div><div class="wide"><div>backg.-color:</div><input id="18" type="text"></div></div><div><div title="after clicking JSON file of ship file waits here to be downloaded throught download link">file output:</div><div class="inp"><a id="8" class="none" title="doubleclick to download 2 instantly (xD)">Download</a><span>no file to download</span></div></div><div id="9"><div title="417kB of ships within 55kB of html with its coding and decoding">my ships:</div></div><div><div title="some of what the code can be used for">for ships:</div><button id="19" title="sets 'my ships' to ships from multiple JSON files">Load ships from files</button><div></div><button id="20" title="sets 'my ships' ships from first csv file">Load ships from csv file</button><div></div><button id="21" title="adds loaded ship to 'my ships'">add ship to ships</button><div></div><button id="22" title="sets file output to csv file of all of 'my ships'">csv file of all ships</button></div></div></div></div></div><div class="CMD-line-bar"><div id="13" contenteditable="true" class="CMD-line CMDscrl"><span></span><span style="color: #999; font-size: 16px;">not working command line</span><span></span></div><div class="CMD-line-btns none">comming spoon</div></div></div><input id="2" class="none" type="file" multiple></div>
+  <div class="RL-divide"><div id="11"><canvas id="0" class="_13" width="480" height="560"></canvas></div><div id="45" class="CMD-chat"><div class="CMD-log-outer"><div class="CMD-log-view CMDscrl"><div class="CMD-log-tobottom"><div id="12" class="CMD-log"><div><div title="mostly for base64">input:</div><input id="1" title="typical input element to not flood console with long strings"></div><div><div title="for opening Deltarealm json ships">file input:</div><div class="inp"><button id="3">Upload</button><span></span></div></div><div><div title="some of what the code can be used for">ship functions:</div><button id="4" title="sets shipt to one from base64">Load ship from Base64</button><div></div><button id="5" title="sets ship to one from file">Load ship from JSON file</button><div></div><button id="6" title="sets input to base64 of actual ship (variable ship can be accesed in console)">base64 of ship</button><div></div><button id="7" title="sets file output to actual ship json than drawed ship png">JSON file of ship</button></div><div><div title="name of actual ship">ship.name:</div><input id="15" type="text" title="encodes ship with this ship.name (just edits name)"></div><div class="inps" title="inputs for my drawShip function"><div class="narrow"><div>width:</div><input id="16" type="number"></div><div class="narrow"><div>height:</div><input id="17" type="number"></div><div class="wide"><div>backg.-color:</div><input id="18" type="text"></div></div><div><div title="after clicking JSON file of ship file waits here to be downloaded throught download link">file output:</div><div class="inp"><a id="8" class="none" title="doubleclick to download 2 instantly (xD)">Download</a><span>no file to download</span></div></div><div id="9"><div title="417kB of ships within 55kB of html with its coding and decoding">my ships:</div></div><div><div title="some of what the code can be used for">for ships:</div><button id="19" title="sets 'my ships' to ships from multiple JSON files">Load ships from files</button><div></div><button id="20" title="sets 'my ships' ships from first csv file">Load ships from csv file</button><div></div><button id="21" title="adds loaded ship to 'my ships'">add ship to ships</button><div></div><button id="22" title="sets file output to csv file of all of 'my ships'">csv file of all ships</button></div><div title="Loads its source throught http request then it can be Downloaded for offline use"><div>HTML document:</div><div id="26" class="inp none"><a href="" download="Dr_editing_tool.html">Download</a><span>Dr_editing_tool.html</span></div><button id="27">Load file</button></div></div></div></div></div><div class="CMD-line-bar"><div id="13" contenteditable="true" class="CMD-line CMDscrl"><span></span><span style="color: #999; font-size: 16px;">not working command line</span><span></span></div><div class="CMD-line-btns none">comming spoon</div></div></div><input id="2" class="none" type="file" multiple></div>
   <script>
     "use strict";
     function GE(v) {var t=typeof v;return document.getElementById(t==="number"&&v>=v?(_ge=v+1)-1:t==="undefined"?v=_ge++:v);}
@@ -51,7 +51,7 @@
         }, 0);
     }
     function message(strarg, cls, priority) {
-      var el = document.createElement('div');
+      var el = document.createElement("div");
       el.innerText = args(strarg).join(" ");
       CMDlog.appendChild(el);
       if (cls)
@@ -90,10 +90,10 @@
     // return true when wrong file format
     // e = error for no file of expected format found
     // f_ = function executed after everything is done
-    // more = true if more all files needs to be processed
+    // more = true if more/all files needs to be processed
     // el = element on which loadbar will appear if given (mostly button)
       if (!file.files.length)
-        return CMD.err('No files chosen');
+        return CMD.err("No files chosen");
       function customLoader(f, e, f_, el, more) {
         this.i = file.open[0];
         this.succ = 0;
@@ -140,15 +140,17 @@
           if (cL.loadbar !== null) {
             var st = cL.loadbar.style;
             if (!cL.succ)
-              st['background-color'] = '#744';
-            st.width = '100%';
-            st.visibility = 'hidden';
-            st.transition = '0.3s';
+              st["background-color"] = "#744";
+            st.width = "100%";
+            setTimeout(function () {
+              st.transition = "0.3s";
+              st["background-color"] = "#0000";
+            }, 130);
             setTimeout(function () {
               var el = cL.loadbar.parentNode;
-              el.nextSibling.classList.remove('none');
+              el.nextSibling.classList.remove("none");
               el.parentNode.removeChild(el);
-            }, 350);
+            }, 400);
           }
         }, false);
       }
@@ -160,7 +162,8 @@
         bar.innerHTML = "<div></div><div>" + el.innerText + "</div>";
         el.parentNode.insertBefore(bar, el);
         el.classList.add("none");
-        cL.loadbar = bar.childNodes[0];
+        (cL.loadbar = bar.childNodes[0]).style.width = "0";
+        cL.loadbar.style["background-color"] = "#474";
         if (bar.offsetWidth !== w) {
           // should have been an formula using bar.offsetWidth, w
           w = "3px";
@@ -208,22 +211,22 @@
     }
     CMDline.onkeyup = function (k) {
       var s = aText(CMDline.innerText), s_, st = null;
-      if (s.indexOf('\n') < 0)
+      if (s.indexOf("\n") < 0)
         return;
-      CMDline.innerText = s = s.replaceAll('\n', '');
-      if (s.slice(0, 5) === 'from:') {
+      CMDline.innerText = s = s.replaceAll("\n", "");
+      if (s.slice(0, 5) === "from:") {
         s = localStorage.getItem(s.slice(5));
         if (s === null)
           return CMD.log("nonexisting slot");
         if (s[0] === '{' && s[s.length - 1] === '}')
-          ship = JSON.parse(s);
+          ship =  JSON.parse(s);
         else
           ship = decodeCmprsShip(base64ToUint8array(s));
         drawShip(canW.value, canH.value, cBC.value);
         shipName.value = ship.name;
-      } else if (s.slice(0, 3) === 'to:') {
-        localStorage.setItem(s.slice(3), cBC.value.slice(-2) === '32' ? JSON.stringify(ship) : input.value);
-      } else if (s.slice(0,2) === 'el') {
+      } else if (s.slice(0, 3) === "to:") {
+        localStorage.setItem(s.slice(3), cBC.value.slice(-2) === "32" ? JSON.stringify(ship) : input.value);
+      } else if (s.slice(0,2) === "el") {
         CMD.log((st = QS(s.slice(3))).offsetHeight);
         st.style.border = "1px white solid";
         setTimeout(function() {
@@ -231,39 +234,7 @@
         }, 3000);
       } else if (s === "autoScroll")
         autoScroll.toString();
-      else if (s === "HTMLdoc" || s === "download") {
-// test
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function () {
-  function ASCIIify(s) {
-    if (typeof s !== "string")
-      throw new Error("s is not type of string");
-    var i, j, c, s_ = "", hex = {};
-    for (i = 16; i-- > 0;)
-      hex[i] = i > 9 ? "abcdef"[i - 10] : i;
-    for (i = 16; i-- > 10;)
-      hex[hex[i]] = i;
-    for (i = s.length; i-- > 0;) {
-      c = s.charCodeAt(i);
-      if (c > 7 && c < 14 && c !== 11)
-        s_ = '\\' + "btnvfr"[c - 8] + s_;
-      else if (c === 34)
-        s_ = "\\\"" + s_;
-      else if (c > 31 && c < 127)
-        s_ = s[i] + s_;
-      else {
-        for (j = 0; j++ < 4; c >>= 4)
-          s_ = hex[c & 15] + s_;
-        s_ = "\\u" + s_;
-      }
-    }
-    return s_;
-  }
-  CMD.log(this.readyState, ["UNSENT", "OPENED", "HEADERS_RECEIVED", "LOADING", "DONE"][this.readyState], ASCIIify(this.responseText));
-};
-xhr.open("GET", window.location);
-xhr.send();
-      } else
+      else
         return CMD.log("expected `from:${key}` or `to:${key}` for local\
         Storage manipulation, `autoScroll` to dis/an-able it");
       /*s.split(";").forEach(function (e) {
@@ -332,12 +303,10 @@ xhr.send();
       GE().onclick = function () {
         if (shipName.value)
           ship.name = shipName.value;
-        else if (ship.name.indexOf("-edited") + 1)
-          shipName.value = ship.name += "-edited";
         toDownload = ["data:text/json;utf8," + JSON.stringify(ship)];
-        var w = 450, h = 600, s = shipName.value, dat;
-        downl.download = s += ".json";
-        downl.nextSibling.innerText = s + " +1";
+        var w = 450, h = 600, s = ship.name, dat;
+        downl.download = s + ".json";
+        downl.nextSibling.innerText = s + ".json +1";
         downl.classList.remove("none");
         drawShip(w, h, cBC.value);
         dat = ctx.getImageData(0, 0, w, h).data;
@@ -490,14 +459,48 @@ xhr.send();
             c.replaceAll("\\", "\\\\").replaceAll(",", "\\c") + ",":
             c + "\n";
         }
-        s = '"ship_name","base64_data"\n' + s;
+        s = "\"ship_name\",\"base64_data\"\n" + s;
         toDownload = [URL.createObjectURL(new Blob([s], {type: "text/csv"}))];
         s = input.value;
         s = s.length && s.length < 128 ? s.replaceAll(",", "") : "DltrShips";
         downl.nextSibling.innerText = downl.download = s + ".csv";
         downl.classList.remove("none");
       };
-
+      // download self
+      var loading = 0, l_interv = -1, d_el = GE(26), l_el = GE();
+      function docUnload() {
+        setTimeout(function () {
+          d_el.href = "";
+          l_el.innerText = "Load file";
+          d_el.classList.add("none");
+          l_el.classList.remove("none");
+        }, 300);
+      }
+      function docLoad() {
+        this.innerText = "Loading";
+        l_interv = setInterval(function() {
+          l_el.innerText = "Loading " + "-\\|/"[++loading & 3];
+        }, 400);
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", window.location);
+        xhr.onreadystatechange = function () {
+          if (this.readyState !== 4)
+            return;
+          clearInterval(l_interv);
+          if (!xhr.responseText) {
+            l_el.innerText = "Try loading again";
+            return CMD.err("file inavalible");
+          }
+          var bl = new Blob([xhr.responseText], {type: "text/plain"});
+          d_el.childNodes[0].href = URL.createObjectURL(bl);
+          l_el.classList.add("none");
+          d_el.classList.remove("none");
+        };
+        xhr.send();
+      }
+      l_el.onclick = docLoad;
+      d_el.onclick = docUnload;
+      // inputs and display setup
       setDrShipEdtr();
       shipName.value = ship.name;
       canW.value = 480;
