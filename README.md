@@ -17,11 +17,13 @@ List of elememnts in there:
 7. 'my ships': buttons loading other ships stored in this html document.  
 8. 'for ships' functions: buttons allowing to: open more ship files at once and replace current 'my ships' with them, opening more throught CSV file of ships, adding loaded ship to 'my ships', create CSV file of ships from 'my ships' (appears in file output) using text from text input as file name if there is and is shorter than 128 characters.  
 9. If functions aren't used properly or error occurs the error will appear below.  
-10. 'HTML document' download: uses http request to get html file source of the page. Downloaded file can be reliably opened offline.  
+10. 'HTML document' download: uses XML http request to get html file source of the page. Downloaded file can be reliably opened offline (no internet required).  
 11. 'not working commandline' at the bottom accepts:  
     - `from:<slot key>` Reads ship from slot by key.  
     - `to:<slot key>` Writes ship to slot by key.  
     Slots (localStorage items) are stored localy on device and per site.  
-    - `autoScroll` Changes autoscroll setting to next option.  
+    - `autoScroll` Changes autoscroll setting to next option: all, none, (only) critical.  
 
 Link to this [Deltarealm ship base64 keys tool](https://KaaBEL.github.io/Deltarealm-b64-keys) as GitHub page.  
+
+If you are wondering how to acces the game ship files, here is video tutorial https://youtu.be/1PyL0NlgpYo for android, LDplayer and with some additional tips.
