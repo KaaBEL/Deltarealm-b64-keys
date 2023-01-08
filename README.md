@@ -15,7 +15,7 @@ List of elememnts in there:
 5. 'width, height, backgr...': are inputs for (not functional/disabled feature) ship displaying function.
 6. 'file output': created files will appear there waiting to be downloaded.  
 7. 'my ships': buttons loading other ships stored in this html document.  
-8. 'for ships' functions: buttons allowing to: open more ship files at once and replace current 'my ships' with them, opening more throught CSV file of ships, adding loaded ship to 'my ships', create CSV file of ships from 'my ships' (appears in file output) using text from text input as file name if there is and is shorter than 128 characters.  
+8. 'for ships' functions: buttons allowing to: open more ship files easily even whole folder at once and allows to replace current 'my ships' with them, opening more throught CSV file of ships, 'add ship to ships' adds loaded ship to 'my ships', 'CSV file of all ships' creates CSV file of ships from 'my ships' (appears in file output) uses text from text input as file name if there is and is shorter than 128 characters.  
 9. If functions aren't used properly or error occurs the error will appear below.  
 10. 'HTML document' download: uses XML http request to get html file source of the page. Downloaded file can be reliably opened offline (no internet required).  
 11. 'not working commandline' at the bottom accepts:  
