@@ -611,12 +611,13 @@
         addClass(GE(45), "corr0");
         addClass(GE(45), "corr1");
       }
-      for (var i = 0, ch = document.head.childNodes; i < ch.length; i++)
-        if (ch[i].nodeName === "TITLE")
-          ch[i].text = "Compressor - tool for Dealtarelm base64 ship keys";
       if (Date.now() > 1681499599999 ||
         /bot\.html/.exec(navigator.userAgent))
         addClass(GE(11).parentNode, "still");
+      else
+        for (var i = 0, ch = document.head.childNodes; i < ch.length; i++)
+          if (ch[i].nodeName === "TITLE")
+            ch[i].text = "Compressor - tool for Dealtarelm base64 ship keys";
     }
     function base64ToUint8array(base64) {
       var uint8array = [], buffer, i = 0, p = 0, c;
