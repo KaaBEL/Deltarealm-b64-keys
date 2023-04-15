@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v.1.1.1.7 -->
+<!-- v.1.1.1.8 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -150,9 +150,12 @@
         document.removeEventListener(e, interacted)
       });
     }
-    ["keydown", "mousemove", "click", "touchstart"].forEach(function (e) {
-      Date.now() < 1689275599999 && document.addEventListener(e, interacted);
-    });
+    if (Date.now() < 1689275599999)
+      ["keydown", "mousemove", "click", "touchstart"].forEach(function (e) {
+        document.addEventListener(e, interacted);
+      });
+    else 
+      GE(45).scrollIntoView(!0);
   </script><script>
     "use strict";
     var file = {input: file, curr: null, files: [], open: []};
@@ -628,8 +631,9 @@
       for (var i = 0, ch = document.head.childNodes; i < ch.length; i++)
         if (ch[i].nodeName === "TITLE")
           ch[i].text = "Compressor - tool for Dealtarelm base64 ship keys";
-      GE("info").style.left = GE(45).offsetLeft + GE(45).offsetWidth -
-        GE("info").offsetWidth - 20 + "px";
+      i = GE(45).offsetLeft + GE(45).offsetWidth -
+        GE("info").offsetWidth - 20;
+      i > 0 && (GE("info").style.left = i + "px");
       window.onresize = function () {
         this.onresize = null;
         GE("info").style.left = 0;
