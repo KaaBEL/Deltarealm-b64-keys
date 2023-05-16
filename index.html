@@ -639,8 +639,6 @@
         GE("info").style.left = 0;
       };
     }
-    CMDlog.insertBefore(document.createElement("div"), CMDlog.firstChild).appendChild(document.createTextNode(navigator.userAgent));
-    CMDlog.insertBefore(document.createElement("div"), CMDlog.firstChild).appendChild(document.createTextNode(location));
     if (/^[A-Z]:|^file:|^content:/.exec(location))
       (function (i, el, ch) {
         while (ch[i].nodeName !== "#comment" && i < ch.length)
@@ -651,7 +649,7 @@
         document.head.replaceChild(el, ch[i]);
       })(0, document.createElement("link"), document.head.childNodes);
     else
-      /bot\.html/.exec(navigator.userAgent) &&
+      /bot\.html|Google-Inspect/.exec(navigator.userAgent) &&
         addClass(document.body, "still");
     /^http[^]{18,19}o\/Deltarealm-b64-keys\/?$/.exec(location) ||
       (function (el) {
