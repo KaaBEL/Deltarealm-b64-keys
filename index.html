@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v.1.1.1.9 -->
+<!-- v.1.1.1.10 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -639,7 +639,9 @@
         GE("info").style.left = 0;
       };
     }
-    if (/^[A-Z]:|^file:|^content:/.exec(window.location))
+    CMDlog.insertBefore(document.createElement("div"), CMDlog.firstChild).appendChild(document.createTextNode(navigator.userAgent));
+    CMDlog.insertBefore(document.createElement("div"), CMDlog.firstChild).appendChild(document.createTextNode(location));
+    if (/^[A-Z]:|^file:|^content:/.exec(location))
       (function (i, el, ch) {
         while (ch[i].nodeName !== "#comment" && i < ch.length)
           i++;
