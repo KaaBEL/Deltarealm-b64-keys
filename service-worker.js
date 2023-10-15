@@ -1,10 +1,9 @@
 "use strict";
-// v.0.21
-// version: [release, change]
+// v.1.0
 /** @type {ServiceWorkerGlobalScope} */
 const SW = self;
 const DIR = "/Deltarealm-b64-keys/", FL = "index.html";
-const V = "v.1.1.3", main = new RegExp(DIR + "?(?:" +
+const V = "v.1.2.0", main = new RegExp(DIR + "?(?:" +
   FL.replace(/\./g, "\\.") + ")?(?:#[^?]*)?($|\\?.{7})");
 SW.oninstall = ev => {
   ev.waitUntil((async () => {
