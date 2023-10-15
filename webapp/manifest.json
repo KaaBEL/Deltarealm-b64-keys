@@ -1,0 +1,35 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "tool for Dealtarealm ship base64 keys",
+  "short_name": "Dr Compressor",
+  "start_url": "/Deltarealm-b64-keys/",
+  "id": "/Deltarealm-b64-keys/",
+  "scope": "/Deltarealm-b64-keys/",
+  "theme_color": "#333333",
+  "background_color": "#000000",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "../favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "../favicon.svg",
+      "sizes": "256x256",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "orientation": "any",
+  "categories": ["games", "development"],
+  "description": "Tool for converting between ship base64 key, ship JSON files and ship CSV files."
+}
