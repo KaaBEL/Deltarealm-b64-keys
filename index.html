@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v.1.2.0.0 -->
+<!-- v.1.2.0.1 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -622,7 +622,7 @@ lStora ge manipulation, `autoScroll` to dis/an-able it");
       JSON.stringify(navigator.userAgentData || {})));
     /^http[^]{18,19}o\/Deltarealm-b64-keys\/?$/.exec(location) ||
       NG(D.head, "link", ["rel", "canonical", "href", "https://kaabel.githu\
-b.io" + dbk]);
+b.io" + dbk.slice(0, -1)]);
     if (/^http:\/\/(?:\d+\.\d+\.\d+\.\d+|localhost:\d+)/.exec(location))
       window.WebSocket = function () {
         var e = window.onerror;
