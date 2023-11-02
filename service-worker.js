@@ -1,10 +1,10 @@
 "use strict";
-// v.1.0
+// v.1.1
 /** @type {ServiceWorkerGlobalScope} */
 const SW = self;
 const DIR = "/Deltarealm-b64-keys/", FL = "index.html";
 const V = "v.1.2.0", main = new RegExp(DIR + "?(?:" +
-  FL.replace(/\./g, "\\.") + ")?(?:#[^?]*)?($|\\?.{7})");
+  FL.replace(/\./g, "\\.") + ")?(?:#[^?]*)?($|\\?[^=]*)");
 SW.oninstall = ev => {
   ev.waitUntil((async () => {
     const o = await caches.open(V);
@@ -20,10 +20,11 @@ const updateCached = () => {
   });
 };
 
+const nofetchOptions = ["?offline", "?online", "?nofetch"];
 /** @param {FetchEvent} ev */
 SW.onfetch = ev => {
   const reg = main.exec(ev.request.url);
-  if (reg !== null && reg[1] !== "?offline" && reg[1] !== "?online") {
+  if (reg !== null && nofetchOptions.includes(reg[1])) {
     updateCached();
     ev.respondWith((async () => {
       return await caches.match(DIR + FL);
