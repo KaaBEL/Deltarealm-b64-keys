@@ -24,6 +24,6 @@ List of elememnts in there:
     Slots (localStorage items) are stored localy on device and per site.  
     - `autoScroll` Changes autoscroll setting to next option: all, none, (only) critical.  
 
-Link to this [Deltarealm ship base64 keys tool](https://KaaBEL.github.io/Deltarealm-b64-keys) as GitHub page.  
+Link to this [Deltarealm ship base64 keys tool](https://KaaBEL.github.io/Deltarealm-b64-keys/) as GitHub page.  
 
 If you are wondering how to acces the game ship files (savefiles), here is video tutorial https://youtu.be/1PyL0NlgpYo for android, LDplayer and with some additional tips.
