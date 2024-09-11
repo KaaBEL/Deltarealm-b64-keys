@@ -1,8 +1,9 @@
 "use strict";
-// v.1.1
+// v.1.1.1
 /** @type {ServiceWorkerGlobalScope} */
 const SW = self;
 const DIR = "/Deltarealm-b64-keys/", FL = "index.html";
+// is the question mark necessary? -----------v
 const V = "v.1.2.0", main = new RegExp(DIR + "?(?:" +
   FL.replace(/\./g, "\\.") + ")?(?:#[^?]*)?($|\\?[^=]*)");
 SW.oninstall = ev => {
